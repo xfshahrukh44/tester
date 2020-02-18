@@ -26,3 +26,7 @@ Route::view('/admin3', 'admin/index3');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::group(['middleware' => ['auth']], function () {
+    
+// });
