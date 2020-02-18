@@ -15,7 +15,10 @@ class CreateLogsTable extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('module_name');
+            $table->integer('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

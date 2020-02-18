@@ -15,7 +15,10 @@ class CreateProductWarehousesTable extends Migration
     {
         Schema::create('product_warehouses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('product_id');
+            $table->integer('warehouse_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
