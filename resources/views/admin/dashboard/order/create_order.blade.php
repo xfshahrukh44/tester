@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('content')
+@section('content_body')
 
 <h1 class="col-md-12" align="center">Create Order</h1>
     <div class="Form">

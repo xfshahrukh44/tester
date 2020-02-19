@@ -1,10 +1,12 @@
+
   <!-- Main Sidebar Container -->
+
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/admin3" class="brand-link">
+    <a href="/dashboard" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">ERP Project</span>
     </a>
 
     <!-- Sidebar -->
@@ -24,35 +26,65 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+          <!-- add class: menu-open for highlight -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <!-- add class active for highlight -->
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Role
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin" class="nav-link active">
+                <!-- add class active to highlight -->
+                <a href="/role" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+                  <p>Add Role</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin2" class="nav-link">
+                <!-- add class active to highlight -->
+                <a href="/role2" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin3" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
+                  <p>View Role</p>
                 </a>
               </li>
             </ul>
           </li>
+
+          <!-- add class: menu-open for highlight -->
+          <li class="nav-item has-treeview menu-open">
+            <!-- add class active for highlight -->
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Product
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <!-- add class active to highlight -->
+                <a href="/admin" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Product</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <!-- add class active to highlight -->
+                <a href="/admin2" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Product</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -554,5 +586,3 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
- 

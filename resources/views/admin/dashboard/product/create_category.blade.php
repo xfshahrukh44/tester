@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('content')
+@section('content_body')
 
 <div class="Form">
         <div class="container">

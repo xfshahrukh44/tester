@@ -25,10 +25,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::view('/addcategory', 'admin/dashboard/add_category');
-    Route::view('/addproduct', 'admin/dashboard/add_product');
-    Route::view('/addwarehouse', 'admin/dashboard/add_warehouse');
-    Route::view('/createorder', 'admin/dashboard/create_order');
+    Route::view('/createorder', 'admin/dashboard/order/create_order');
+    Route::view('/createcategory', 'admin/dashboard/product/create_category');
+    Route::view('/createproduct', 'admin/dashboard/product/create_product');
+    Route::view('/createrole', 'admin/dashboard/role/create_role');
+    Route::view('/roles', 'admin/dashboard/role/role_list');
+    Route::view('/createwarehouse', 'admin/dashboard/warehouse/create_warehouse');
+    Route::view('/', 'admin/dashboard/index');
 });
 
 // Route::group(['middleware' => ['auth', 'role:admin']], function(){
