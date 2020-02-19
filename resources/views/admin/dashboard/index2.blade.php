@@ -13,3 +13,9 @@
       </div><!-- /.col -->
     </div><!-- /.row -->
 @endsection('content_header')
+
+@section('content_body')
+
+  
+    
+@endsection('content_body')

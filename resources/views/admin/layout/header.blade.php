@@ -26,6 +26,28 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <style>
+    .Form .container{
+        border: 1px solid #d6cdcd;
+        padding: 40px;
+    }
+    .Form{
+        padding-top: 6%;
+    }
+    .input-group{
+        padding-bottom: 20px;
+    }
+    button.btn.btn-primary{
+        padding: 9px 25px;
+        font-size: 17px;
+        font-weight: 600;
+    }
+    button i.glyphicon.glyphicon-send{
+        padding-right: 10px;
+    }
+  </style>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

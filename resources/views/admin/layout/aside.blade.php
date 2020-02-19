@@ -6,7 +6,7 @@
     <a href="/admin3" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">ERP Project</span>
     </a>
 
     <!-- Sidebar -->
@@ -30,7 +30,7 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Product
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -38,7 +38,7 @@
               <li class="nav-item">
                 <a href="/admin" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+                  <p>Add Product</p>
                 </a>
               </li>
               <li class="nav-item">
