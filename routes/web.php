@@ -15,13 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/admin', 'admin/dashboard/index');
+Route::view('/admin', 'admin/dashboard/product/product');
 Route::view('/admin2', 'admin/dashboard/index2');
-Route::view('/admin3', 'admin/dashboard/index3');
+Route::view('/dashboard', 'admin/dashboard/index');
+Route::view('/role', 'admin/dashboard/role/role');
+Route::view('/role2', 'admin/dashboard/role/role_list');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 //Route::group(['middleware' => ['auth']], function () {
 
