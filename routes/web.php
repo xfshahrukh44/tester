@@ -21,7 +21,7 @@ Route::get('/admin2', function(){
 
 Route::view('/admin', 'admin/layouts/app');
 Route::view('/admin2', 'admin/index2');
-Route::view('/admin3', 'admin/index3');
+Route::view('/admin3', 'admin/index3'); 
 
 Auth::routes();
 
