@@ -4,6 +4,10 @@
 
 @include('admin.layouts.aside')
 
-@include('admin.layouts.wrapper1')
+<div class="content-wrapper">
+    <div class = "content-fluid">
+        @yield('content')
+    </div>
+</div>
 
 @include('admin.layouts.footer')
