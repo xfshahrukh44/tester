@@ -15,18 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin2', function(){
-    return view('admin/index2');
-});
-
-Route::view('/admin', 'admin/index');
-Route::view('/admin2', 'admin/index2');
-Route::view('/admin3', 'admin/index3');
+Route::view('/admin', 'admin/dashboard/index');
+Route::view('/admin2', 'admin/dashboard/index2');
+Route::view('/admin3', 'admin/dashboard/index3');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Route::group(['middleware' => ['auth']], function () {
-    
+
 // });
