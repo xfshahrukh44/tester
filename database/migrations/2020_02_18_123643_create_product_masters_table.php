@@ -15,7 +15,20 @@ class CreateProductMastersTable extends Migration
     {
         Schema::create('product_masters', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('category_id');
+            $table->string('title')->unique();
+            $table->text('short_desc');
+            $table->longText('long_desc');
+            $table->string('unit');
+            $table->integer('price');
+            $table->integer('cost');
+            $table->integer('discount');
+            $table->enum('status', ['draft', 'pending', 'completed']);
+            $table->string('created_by');
+            $table->string('modified_by')->nullable();
+            $table->integer('threshold');
             $table->timestamps();
+            $table->softDeletes()->nullable();
         });
     }
 
