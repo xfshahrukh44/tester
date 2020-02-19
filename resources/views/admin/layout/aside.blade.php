@@ -1,8 +1,6 @@
-<<<<<<< HEAD:resources/views/admin/layout/aside.blade.php
-<!-- Main Sidebar Container -->
-=======
+
   <!-- Main Sidebar Container -->
->>>>>>> d8acdbd0daea84b6c4ff0712ea271c97c78029ba:resources/views/admin/layouts/aside.blade.php
+
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/admin3" class="brand-link">
@@ -557,10 +555,5 @@
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-<<<<<<< HEAD:resources/views/admin/layout/aside.blade.php
-  </aside>
-=======
   </aside>
 
- 
->>>>>>> d8acdbd0daea84b6c4ff0712ea271c97c78029ba:resources/views/admin/layouts/aside.blade.php
