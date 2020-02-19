@@ -19,7 +19,7 @@ Route::get('/admin2', function(){
     return view('admin/index2');
 });
 
-Route::view('/admin', 'admin/index');
+Route::view('/admin', 'admin/layouts/app');
 Route::view('/admin2', 'admin/index2');
 Route::view('/admin3', 'admin/index3');
 
