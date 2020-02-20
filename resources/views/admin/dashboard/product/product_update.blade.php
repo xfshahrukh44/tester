@@ -8,7 +8,8 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Add product</li>
+            <li class="breadcrumb-item"><a href="#">Product</a></li>
+            <li class="breadcrumb-item active">Edit product</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -23,7 +24,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  Add Category
+                  Edit Product
                 </h3>
                 
               </div><!-- /.card-header -->
@@ -33,27 +34,11 @@
                   
                   <!-- Main card content.. -->
 
-                    <form class="">
-                      <div class="row">                        
-                          <div class="col-md-4">
-                              <div class="form-group">
-                                <label for="product_title">Category Title</label>
-                                <input type="text" class="form-control" id="product_title" placeholder="Enter Product Name">
-                              </div>
-                          </div>
+                  {{ Form::model($product, ['route'=>['product.update',$product->id],'method'=>'PATCH']) }}
+                  @include('admin.dashboard.product.product_master')
+                  {{ Form::close() }}
 
-                          <div class="col-md-4">
-                              <div class="form-group">
-                                <label for="product_cost">Parent</label>
-                                <input type="text" class="form-control" id="product_cost" placeholder="Enter Product Cost">
-                              </div>
-                          </div>
 
-                          <div class="col-md-12">
-                              <button type="submit" class="btn btn-primary">Add Category</button>
-                          </div>   
-                      </div>
-                  </form>
 
                   <!-- /.Main card-content.. -->
        

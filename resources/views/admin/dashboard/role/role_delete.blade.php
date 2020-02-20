@@ -8,7 +8,8 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Add Role</li>
+            <li class="breadcrumb-item"><a href="#">Role</a></li>
+            <li class="breadcrumb-item active">Delete Role</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -23,7 +24,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  Add Role
+                  Delete Role
                 </h3>
                 <!-- <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -41,24 +42,7 @@
 
 
 
-                  <!-- form start -->
-                      <form role="form">
-                        <div class="">
-                          <div class="col-md-4">
-                            <div class="form-group">
-                              <label for="roleName">Role Name</label>
-                              <input type="text" class="form-control" id="role_name" placeholder="Enter role name">
-                              <br>
-                              <button type="submit" class="btn btn-primary">Submit</button>
-
-                          </div>
-                          </div>
-                        </div>
-                          
-                          
-                        <div class="card-footer">
-                        </div>
-                      </form>
+                  
 
 
 

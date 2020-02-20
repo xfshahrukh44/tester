@@ -8,6 +8,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Product</a></li>
             <li class="breadcrumb-item active">View product</li>
         </ol>
       </div><!-- /.col -->
@@ -33,14 +34,14 @@
                   
                   <!-- Main card content.. -->
                   <div class="container">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-responsive table-hover">
                       <thead>
                         <tr>
-                          <th>Product ID</th>
-                          <th>Product Name</th>
+                          <th>No.</th>
                           <th>Category Name</th>
+                          <th>Product Name</th>
                           <th>Product Description</th>
-                          <!-- <th>Unit</th>
+                          <th>Unit</th>
                           <th>Cost</th>
                           <th>Price</th>
                           <th>Discount %</th>
@@ -48,26 +49,47 @@
                           <th>Thersold</th>
                           <th>Created By</th>
                           <th>Modified By</th>
-                          <th>Created At</th>
-                          <th>Updated At</th> -->
+                          <th></th>
                         </tr>
                       </thead>
-                      <!-- <tbody>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tbody> -->
+                      <tbody>
+                        <?php $no=1;?>
+                          @foreach($product as $key => $value)
+                          <tr>
+                            <td >{{$no++}}</td>
+                            <td >{{$value->category_id}}</td>
+                            <td >{{$value->title }}</td>
+                            <td >{{$value->short_desc }}</td>
+                            <!-- <td >{{$value->long_desc }}</td> -->
+                            <td >{{$value->unit }}</td>
+                            <td >{{$value->cost }}</td>
+                            <td >{{$value->price }}</td>
+                            <td >{{$value->discount }}</td>
+                            <td >{{$value->status }}</td>
+                            <td >{{$value->threshold }}</td>
+                            <td >{{$value->created_by }}</td>
+                            <td >{{$value->modified_by }}</td>
+                            
+                            <td style="text-align: center;">
+                              <a class="btn btn-info btn-sm" href="{{route('product.show',$value->id)}}">
+                                <i class="glyphicon glyphicon-th-large" style="font-size: 10px">Show</i>
+                              </a>
+                            </td>
+                            <!-- <td style="font-size: 10px; text-align: center;">
+                              <a class="btn btn-primary btn-sm" href="{{route('product.edit',$value->id)}}">
+                                <i class="glyphicon gylphicon-pencil" style="font-size: 10px">Edit</i>    
+                              </a>
+                            </td>
+                            <td style="font-size: 10px; text-align: center;">
+                              {!! Form::open(['method' => 'DELETE','route' => ['product.destroy',$value->id],'style'=>'display']) !!}
+                              <button type="submit" style="display: inline;" class="btn btn-danger btn-sm">
+                                <i class="glyphicon glyphicon-th-large" style="font-size: 10px">Delete</i>
+                              </button>
+                              {!! Form::close() !!}
+                            </td> -->
+                          </tr>
+                          @endforeach 
+                      </tbody>
                     </table>
                   </div>
                   
