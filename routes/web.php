@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::view('/', 'admin/dashboard/index');
 });
 
+Route::resource('product', 'ProductMasterController');
+
 // Route::group(['middleware' => ['auth', 'role:admin']], function(){
 //     Route::get('dashboard/download/{id}', 'DashboardController@downloadCourse')->name('abc');
 // });

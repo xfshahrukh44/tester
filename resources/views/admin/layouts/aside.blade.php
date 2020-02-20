@@ -4,8 +4,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/dashboard" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
+      <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8"> -->
       <span class="brand-text font-weight-light">ERP Project</span>
     </a>
 
@@ -13,9 +13,9 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
+        <!-- <div class="image">
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
+        </div> -->
         <div class="info">
           <a href="#" class="d-block">Alexander Pierce</a>
         </div>
@@ -52,8 +52,37 @@
                   <p>View Role</p>
                 </a>
               </li>
+              
             </ul>
           </li>
+
+          <li class="nav-item has-treeview menu-open">
+            <!-- add class active for highlight -->
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Category
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <!-- add class active to highlight -->
+                <a href="/category" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <!-- add class active to highlight -->
+                <a href="/category2" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Category</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
 
           <!-- add class: menu-open for highlight -->
           <li class="nav-item has-treeview menu-open">
@@ -68,22 +97,20 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <!-- add class active to highlight -->
-                <a href="/admin" class="nav-link ">
+                <a href="{{ asset('product/create') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Product</p>
                 </a>
               </li>
               <li class="nav-item">
                 <!-- add class active to highlight -->
-                <a href="/admin2" class="nav-link ">
+                <a href="{{ asset('product') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Product</p>
                 </a>
               </li>
             </ul>
           </li>
-
-
 
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
