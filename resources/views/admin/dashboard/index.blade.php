@@ -17,7 +17,12 @@
 @section('content_body')
 
     <div class="row">
-      
+      @foreach($category as $categories)
+        <table>
+          <tr><td>{{ $categories->id }}</td></tr>
+          <tr><td>{{ $categories->title }}</td></tr>
+          @endforeach
+        </table>
     </div>
     
 

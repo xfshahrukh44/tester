@@ -9,8 +9,8 @@
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Product</a></li>
-            <li class="breadcrumb-item">View product</li>
-            <li class="breadcrumb-item active">$product->title</li>
+            <li class="breadcrumb-item"> <a href="{{ route('product.index') }}">View product</a></li>
+            <li class="breadcrumb-item active">{{$product->title}}</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->

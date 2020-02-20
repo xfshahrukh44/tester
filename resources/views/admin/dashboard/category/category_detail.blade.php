@@ -9,7 +9,8 @@
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Category</a></li>
-            <li class="breadcrumb-item active">Add Category</li>
+            <li class="breadcrumb-item active"><a href="{{ route('category.index') }}">View Category</a></li>
+            <li class="breadcrumb-item active">{{$category->title}}</li>            
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -24,7 +25,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  Add Category
+                  Category
                 </h3>
                 
               </div><!-- /.card-header -->
@@ -34,10 +35,28 @@
                   
                   <!-- Main card content.. -->
 
-                    {{Form::open(['route' => 'category.store', 'method' => 'POST'])}}
-                      @include('admin.dashboard.category.category_master')                
+                    <div class="">
+                    <div class="container">
+                        <div class="form-group">
+                            <strong>Title: </strong>
+                            {{ $category->title}}
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <strong>Parent: </strong>
+                            {{ $category->parent}}
+                        </div>
+                    </div>
+                  </div>
+                  
+                <div class="col-md-12">
+                    <a class="btn btn-success" href="{{route('category.edit', $category->id)}}">Edit</a>
+
+                    {{ Form::open(['method' => 'DELETE','route' => ['category.destroy', $category->id]]) }}
+                      <button type="submit" class="btn btn-danger">Delete</button>
                     {{ Form::close() }}
-                    
+                </div>
                   
 
                   <!-- /.Main card-content.. -->

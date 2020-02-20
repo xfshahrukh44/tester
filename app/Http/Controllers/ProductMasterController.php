@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\ProductMaster;
+use App\Model\ProductCategory;
 use Illuminate\Http\Request;
 
 class ProductMasterController extends Controller
@@ -111,5 +112,10 @@ class ProductMasterController extends Controller
     {
         ProductMaster::find($id)->delete();
         return redirect()->route('product.index')->with('success','Record Deleted Successfully');
+    }
+
+    public function categoryName(){
+        $category = ProductCategory::with('product_master')->get();
+        return view('admin.dashboard.index', compact('category'));
     }
 }

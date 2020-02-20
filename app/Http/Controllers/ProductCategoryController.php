@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\ProductCategory;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ProductCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $category = ProductCategory::all();
+        return view('admin.dashboard.category.category_list', compact('category')); 
     }
 
     /**
@@ -23,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dashboard.category.category_create');
     }
 
     /**
@@ -34,7 +36,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[ 
+            'title' => 'required'
+        ]);
+        ProductCategory::create($request->all());
+        return redirect()->route('category.index')->with('success','Record Created Successfully');
     }
 
     /**
@@ -45,7 +51,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+         $category = ProductCategory::find($id);
+        return view('admin.dashboard.category.category_detail',compact('category'));
     }
 
     /**
@@ -56,7 +63,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = ProductCategory::find($id);
+        return view('admin.dashboard.category.category_update',compact('category'));
     }
 
     /**
@@ -68,7 +76,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[ 
+            'title' => 'required' 
+        ]);
+        ProductCategory::find($id)->update($request->all());
+        return redirect()->route('category.index')->with('success','Record Updated Successfully');
     }
 
     /**
@@ -79,6 +91,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ProductCategory::find($id)->delete();
+        return redirect()->route('category.index')->with('success','Record Deleted Successfully');
     }
 }

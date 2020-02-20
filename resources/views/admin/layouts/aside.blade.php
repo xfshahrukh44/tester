@@ -68,14 +68,14 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <!-- add class active to highlight -->
-                <a href="/category" class="nav-link ">
+                <a href="{{ asset('category/create') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Category</p>
                 </a>
               </li>
               <li class="nav-item">
                 <!-- add class active to highlight -->
-                <a href="/category2" class="nav-link ">
+                <a href="{{ asset('category') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Category</p>
                 </a>
