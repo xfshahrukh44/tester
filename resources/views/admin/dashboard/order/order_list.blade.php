@@ -24,7 +24,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  View Order
+                  Order List
                 </h3>
                 
               </div><!-- /.card-header -->
@@ -45,7 +45,7 @@
                           <th>Payment</th>
                           <th>Discount</th>
                           <th>Discount Unit</th>
-                          <th></th>
+                          <th style="text-align: center;"><a class="btn btn-success" style="font-size: 10px" href="{{route('order.create')}}">Add</a></th>
                         </tr>
                       </thead>
                       <tbody>

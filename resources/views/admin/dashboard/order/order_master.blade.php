@@ -2,7 +2,8 @@
                           <div class="col-md-4">
                               <div class="form-group">
                                 {{ Form::label('user_id', 'User ID') }}
-                                {{ Form::text('user_id', null, ['class'=>'form-control', 'placeholder'=>'Enter User ID']) }}
+                               
+                                {{ Form::text('user_id', Auth::id(), ['class'=>'form-control', 'placeholder'=>'Enter User ID', 'readonly' => 'true' ]) }}
                               </div>
                           </div>
 

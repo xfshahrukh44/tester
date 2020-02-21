@@ -24,7 +24,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  View Category
+                  Category List
                 </h3>
                 
               </div><!-- /.card-header -->
@@ -41,7 +41,7 @@
                           <th>No.</th>
                           <th>Category Title</th>
                           <th>Parent</th>
-                          <th></th>
+                          <th style="text-align: center;"><a class="btn btn-success" style="font-size: 10px" href="{{route('category.create')}}">Add</a></th>
                         </tr>
                       </thead>
                       <tbody>

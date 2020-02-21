@@ -15,23 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::view('/role', 'admin/dashboard/role/role_create');
-Route::view('/role2', 'admin/dashboard/role/role_list');
-Route::view('/role3', 'admin/dashboard/role/role_update');
-Route::view('/cat', 'ProductMasterController@categoryName');
-
-Route::get('/dashboard', 'ProductMasterController@categoryName');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::resource('product', 'ProductMasterController');
-Route::resource('category', 'ProductCategoryController');
-Route::resource('order', 'OrderMasterController');
-
-
-//Route::group(['middleware' => ['auth']], function () {
-
-// });
+Route::group(['middleware' => ['auth']], function () {
+	Route::view('/dashboard', 'admin/dashboard/index');
+	Route::resource('product', 'ProductMasterController');
+	Route::resource('category', 'ProductCategoryController');
+	Route::resource('order', 'OrderMasterController');
+	Route::resource('warehouse', 'WarehouseController');
+});

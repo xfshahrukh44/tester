@@ -92,9 +92,9 @@
                               <div class="form-group">
                                 {{Form::label('created_by','Created By')}}
                                 <div class="form-group {{$errors->has('created_by') ? 'has-error' : ''}} "></div>
-                                {{Form::text('created_by', null,['class' => 'form-control','id' => 'created_by', 'placeholder' => 'Created By'])}}
-                                {{$errors->first('created_by','message')}}
-
+                                  {{Form::text('created_by', Auth::user()->name, ['class' => 'form-control','id' => 'created_by', 'placeholder' => 'Created By', 'readonly' => 'true'])}}
+                                  {{$errors->first('created_by','message')}}
+                               
                               </div>
                           </div>
 
@@ -102,7 +102,7 @@
                               <div class="form-group">
                                 {{Form::label('modified_by','Modified By')}}
                                 <div class="form-group {{$errors->has('modified_by') ? 'has-error' : ''}} "></div>
-                                {{Form::text('modified_by', null,['class' => 'form-control','id' => 'modified_by', 'placeholder' => 'Modified By'])}}
+                                {{Form::text('modified_by', Auth::user()->name, ['class' => 'form-control','id' => 'modified_by', 'placeholder' => 'Modified By','readonly' => 'true'])}}
                                 <!-- {{$errors->first('modified_by','message')}} -->
                               </div>
                           </div>

@@ -17,7 +17,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div> -->
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{Auth::user()->name}}</a>
         </div>
       </div>
 
@@ -27,119 +27,71 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-          <!-- add class: menu-open for highlight -->
-          <li class="nav-item has-treeview menu-open">
+
+          <li class="nav-item">
+            <a href="{{ asset('product') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Products
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ asset('category') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Categories
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ asset('order') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Orders
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ asset('warehouse') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Warehouses
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
             <!-- add class active for highlight -->
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Role
+                User Management
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <!-- add class active to highlight -->
-                <a href="/role" class="nav-link">
+                <a href="{{ asset('user') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Role</p>
+                  <p>Users</p>
                 </a>
               </li>
               <li class="nav-item">
                 <!-- add class active to highlight -->
-                <a href="/role2" class="nav-link">
+                <a href="{{ asset('role') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View Role</p>
-                </a>
-              </li>
-              
-            </ul>
-          </li>
-
-          <li class="nav-item has-treeview menu-open">
-            <!-- add class active for highlight -->
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Category
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <!-- add class active to highlight -->
-                <a href="{{ asset('category/create') }}" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <!-- add class active to highlight -->
-                <a href="{{ asset('category') }}" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Category</p>
+                  <p>Roles</p>
                 </a>
               </li>
             </ul>
           </li>
 
-
-          <!-- add class: menu-open for highlight -->
-          <li class="nav-item has-treeview menu-open">
-            <!-- add class active for highlight -->
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Product
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <!-- add class active to highlight -->
-                <a href="{{ asset('product/create') }}" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Product</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <!-- add class active to highlight -->
-                <a href="{{ asset('product') }}" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Product</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <!-- add class: menu-open for highlight -->
-          <li class="nav-item has-treeview menu-open">
-            <!-- add class active for highlight -->
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Order
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <!-- add class active to highlight -->
-                <a href="{{ asset('order/create') }}" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Order</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <!-- add class active to highlight -->
-                <a href="{{ asset('order') }}" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Order</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
+<!-- 
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -634,7 +586,7 @@
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Informational</p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

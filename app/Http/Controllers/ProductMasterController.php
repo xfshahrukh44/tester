@@ -30,7 +30,7 @@ class ProductMasterController extends Controller
         
         $category_name = [];
         foreach($category as $categories){
-            $category_name[$categories->id] = $categories->id;
+            $category_name[$categories->id] = $categories->title;
         }
 
         return view('admin.dashboard.product.product_create', compact('category_name'));
@@ -84,7 +84,7 @@ class ProductMasterController extends Controller
         
         $category_name = [];
         foreach($category as $categories){
-            $category_name[$categories->id] = $categories->id;
+            $category_name[$categories->id] = $categories->title;
         }
 
         $product = ProductMaster::find($id);
