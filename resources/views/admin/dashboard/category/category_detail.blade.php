@@ -9,7 +9,8 @@
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Category</a></li>
-            <li class="breadcrumb-item active">View Category</li>
+            <li class="breadcrumb-item active"><a href="{{ route('category.index') }}">View Category</a></li>
+            <li class="breadcrumb-item active">{{$category->title}}</li>            
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -24,7 +25,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  View Category
+                  Category
                 </h3>
                 
               </div><!-- /.card-header -->
@@ -34,33 +35,29 @@
                   
                   <!-- Main card content.. -->
 
+                    <div class="">
                     <div class="container">
-                    <table class="table table-bordered table-hover">
-                      <thead>
-                        <tr>
-                          <th>No.</th>
-                          <th>Category Title</th>
-                          <th>Parent</th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php $no=1;?>
-                          @foreach($category as $key => $value)
-                          <tr>
-                            <td >{{$no++}}</td>
-                            <td >{{$value->title}}</td>
-                            <td >{{$value->parent}}</td>
-                            <td style="text-align: center;">
-                              <a class="btn btn-info btn-sm" href="{{route('category.show',$value->id)}}">
-                                <i class="" style="font-size: 10px">Show</i>
-                              </a>
-                            </td>
-                          </tr>
-                          @endforeach 
-                      </tbody>
-                    </table>
+                        <div class="form-group">
+                            <strong>Title: </strong>
+                            {{ $category->title}}
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <strong>Parent: </strong>
+                            {{ $category->parent}}
+                        </div>
+                    </div>
                   </div>
+                  
+                <div class="col-md-12">
+                    <a class="btn btn-success" href="{{route('category.edit', $category->id)}}">Edit</a>
+
+                    {{ Form::open(['method' => 'DELETE','route' => ['category.destroy', $category->id]]) }}
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                    {{ Form::close() }}
+                </div>
+                  
 
                   <!-- /.Main card-content.. -->
        

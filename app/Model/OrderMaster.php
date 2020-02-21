@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class OrderMaster extends Model
 {
+    use SoftDeletes;
+
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function order_item()

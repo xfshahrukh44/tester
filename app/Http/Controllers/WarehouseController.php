@@ -14,7 +14,8 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        //
+        $warehouse = Warehouse::all();
+        return view('admin.dashboard.warehouse.warehouse_list', compact('warehouse'));
     }
 
     /**
@@ -24,7 +25,7 @@ class WarehouseController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dashboard.warehouse.warehouse_create');
     }
 
     /**
@@ -35,7 +36,13 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[ 
+            'title' => 'required|string|max:250',
+            'location' => 'required|string|max:250',
+        ]);
+
+        Warehouse::create($request->all());
+        return redirect()->route('warehouse.index')->with('success','Record Created Successfully');
     }
 
     /**
@@ -44,9 +51,10 @@ class WarehouseController extends Controller
      * @param  \App\Model\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function show(Warehouse $warehouse)
+    public function show($id)
     {
-        //
+        $warehouse = Warehouse::find($id);
+        return view('admin.dashboard.warehouse.warehouse_detail',compact('warehouse'));
     }
 
     /**
@@ -55,9 +63,10 @@ class WarehouseController extends Controller
      * @param  \App\Model\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function edit(Warehouse $warehouse)
+    public function edit($id)
     {
-        //
+        $warehouse = Warehouse::find($id);
+        return view('admin.dashboard.warehouse.warehouse_update',compact('warehouse'));
     }
 
     /**
@@ -67,9 +76,14 @@ class WarehouseController extends Controller
      * @param  \App\Model\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Warehouse $warehouse)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[ 
+            'title' => 'required|string|max:250',
+            'location' => 'required|string|max:250',
+        ]);
+        Warehouse::find($id)->update($request->all());
+        return redirect()->route('warehouse.index')->with('success','Record Updated Successfully');
     }
 
     /**
@@ -78,8 +92,9 @@ class WarehouseController extends Controller
      * @param  \App\Model\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Warehouse $warehouse)
+    public function destroy($id)
     {
-        //
+        Warehouse::find($id)->delete();
+        return redirect()->route('warehouse.index')->with('success','Record Deleted Successfully');
     }
 }

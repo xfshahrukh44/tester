@@ -3,7 +3,8 @@
                               <div class="form-group">
                                 {{Form::label('category_id','Category')}}
                                 <div class="form-group {{$errors->has('category_id') ? 'has-error' : ''}} "></div>
-                                {{Form::text('category_id', null,['class'=>'form-control','id'=>'category_id','placeholder'=>'Enter Category ID'])}}
+                                {{Form::text('product_category_id', null,['class'=>'form-control','id'=>'product_category_id','placeholder'=>'Enter Category ID'])}}
+                                
                                 <!-- {{$errors->first('category_id','<p class="help-block">:message</p>')}} -->
                                     
                               </div>

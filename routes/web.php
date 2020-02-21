@@ -36,6 +36,12 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::resource('product', 'ProductMasterController');
 
+Route::resource('category', 'ProductCategoryController');
+
+Route::resource('warehouse', 'WarehouseController');
+
+Route::get('/test', 'ProductMasterController@test');
+
 // Route::group(['middleware' => ['auth', 'role:admin']], function(){
 //     Route::get('dashboard/download/{id}', 'DashboardController@downloadCourse')->name('abc');
 // });

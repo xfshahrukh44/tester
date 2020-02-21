@@ -3,7 +3,7 @@
 @section('content_header')
     <div class="row mb-2">
       <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Product</h1>
+          <h1 class="m-0 text-dark">Category</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -34,8 +34,10 @@
                   
                   <!-- Main card content.. -->
 
+                    {{Form::open(['route' => 'category.store', 'method' => 'POST'])}}
+                      @include('admin.dashboard.category.category_master')                
+                    {{ Form::close() }}
                     
-                      @include('admin.dashboard.category.category_master')
                   
 
                   <!-- /.Main card-content.. -->

@@ -3,7 +3,9 @@
 @section('content_body')
 
 <div class="container">
-    <h1>Hello {{Auth::user()->name}} </h1>
+    @foreach($categories as $category)
+        <h1>{{$category->title}}</h1>
+    @endforeach
 </div>
 
 @endsection

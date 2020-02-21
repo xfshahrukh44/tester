@@ -15,7 +15,7 @@ class CreateProductMastersTable extends Migration
     {
         Schema::create('product_masters', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('category_id');
+            $table->integer('product_category_id');
             $table->string('title')->unique();
             $table->text('short_desc');
             $table->longText('long_desc');

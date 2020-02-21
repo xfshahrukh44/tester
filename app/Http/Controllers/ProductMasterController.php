@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\ProductMaster;
+use App\Model\ProductCategory;
 use Illuminate\Http\Request;
 
 class ProductMasterController extends Controller
@@ -25,7 +26,8 @@ class ProductMasterController extends Controller
      */
     public function create()
     {
-        return view('admin.dashboard.product.product_create');
+        $categories = ProductCategory::with('product_master')->get();
+        return view('admin.dashboard.product.product_create', compact('categories'));
     }
 
     /**
@@ -37,7 +39,7 @@ class ProductMasterController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[ 
-            'category_id' => 'required', 
+            'product_category_id' => 'required', 
             'title' => 'required|string|max:250',
             'short_desc' => 'required|string|max:250',
             'long_desc' => 'required|string',
@@ -87,7 +89,7 @@ class ProductMasterController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'category_id' => 'required', 
+            'product_category_id' => 'required', 
             'title' => 'required|string|max:250',
             'short_desc' => 'required|string|max:250',
             'long_desc' => 'required|string',
@@ -113,4 +115,9 @@ class ProductMasterController extends Controller
         ProductMaster::find($id)->delete();
         return redirect()->route('product.index')->with('success','Record Deleted Successfully');
     }
+
+    // public function test()
+    // {
+        
+    // }
 }

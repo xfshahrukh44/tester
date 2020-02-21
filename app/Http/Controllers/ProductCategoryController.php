@@ -14,7 +14,8 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $category = ProductCategory::all();
+        return view('admin.dashboard.category.category_list', compact('category'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dashboard.category.category_create');
     }
 
     /**
@@ -35,7 +36,12 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[ 
+            'title' => 'required|string|max:250',
+            'parent' => 'string|max:250',
+        ]);
+        ProductCategory::create($request->all());
+        return redirect()->route('category.index')->with('success','Record Created Successfully');
     }
 
     /**
@@ -44,9 +50,10 @@ class ProductCategoryController extends Controller
      * @param  \App\Model\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductCategory $productCategory)
+    public function show($id)
     {
-        //
+        $category = ProductCategory::find($id);
+        return view('admin.dashboard.category.category_detail',compact('category'));
     }
 
     /**
@@ -55,9 +62,10 @@ class ProductCategoryController extends Controller
      * @param  \App\Model\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductCategory $productCategory)
+    public function edit($id)
     {
-        //
+        $category = ProductCategory::find($id);
+        return view('admin.dashboard.category.category_update',compact('category'));
     }
 
     /**
@@ -67,9 +75,14 @@ class ProductCategoryController extends Controller
      * @param  \App\Model\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductCategory $productCategory)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[ 
+            'title' => 'required|string|max:250',
+            'parent' => 'string|max:250',
+        ]);
+        ProductCategory::find($id)->update($request->all());
+        return redirect()->route('category.index')->with('success','Record Updated Successfully');
     }
 
     /**
@@ -78,8 +91,9 @@ class ProductCategoryController extends Controller
      * @param  \App\Model\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductCategory $productCategory)
+    public function destroy($id)
     {
-        //
+        ProductCategory::find($id)->delete();
+        return redirect()->route('category.index')->with('success','Record Deleted Successfully');
     }
 }
