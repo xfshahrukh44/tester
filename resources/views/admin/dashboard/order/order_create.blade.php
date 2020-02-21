@@ -3,13 +3,13 @@
 @section('content_header')
     <div class="row mb-2">
       <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Role</h1>
+          <h1 class="m-0 text-dark">Order</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Role</a></li>
-            <li class="breadcrumb-item active">Delete Role</li>
+            <li class="breadcrumb-item"><a href="#">Order</a></li>
+            <li class="breadcrumb-item active">Add Order</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -24,15 +24,9 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  Delete Role
+                  Add Order
                 </h3>
-                <!-- <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Save</a>
-                    </li>
-                  </ul>
-                </div> -->
+                
               </div><!-- /.card-header -->
 
               <div class="card-body">
@@ -40,13 +34,11 @@
                   
                   <!-- Main card content.. -->
 
-
-
+                    {{Form::open(['route' => 'order.store', 'method' => 'POST'])}}
+                      @include('admin.dashboard.order.order_master')                
+                    {{ Form::close() }}
+                    
                   
-
-
-
-
 
                   <!-- /.Main card-content.. -->
        

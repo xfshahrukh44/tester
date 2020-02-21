@@ -34,14 +34,13 @@
                   
                   <!-- Main card content.. -->
 
-                    <div class="container">
+                    <div class="container col-md-12">
                     <table class="table table-bordered table-hover">
                       <thead>
                         <tr>
                           <th>No.</th>
                           <th>Category Title</th>
                           <th>Parent</th>
-                          <th></th>
                         </tr>
                       </thead>
                       <tbody>

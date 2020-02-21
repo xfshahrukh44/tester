@@ -1,17 +1,16 @@
 <!-- form start -->
-<form role="form">
                         <div class="">
-                          <div class="col-md-4">
+                          <div class="col-md-12">
                             <div class="form-group">
-                              <label for="roleName">Role Name</label>
-                              <input type="text" class="form-control" id="role_name" placeholder="Enter role name">
-                              <br>
-                              <button type="submit" class="btn btn-primary">Submit</button>
-
+                              {{Form::label('name','Role Name')}}
+                              {{Form::text('name', null,['class' => 'form-control','id' => 'id','placeholder' => 'Enter Role'])}}
+                              
                           </div>
                           </div>
                         </div>
                           
                         <div class="card-footer">
+                        <div class="col-md-12">
+                        {{Form::button(isset($model)? 'Update' : 'Save', ['class' => 'btn btn-primary','type' => 'submit'])}}
+                          </div> 
                         </div>
-                      </form>

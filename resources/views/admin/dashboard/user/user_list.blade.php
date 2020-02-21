@@ -3,13 +3,13 @@
 @section('content_header')
     <div class="row mb-2">
       <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Warehouse</h1>
+          <h1 class="m-0 text-dark">User</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Warehouse</a></li>
-            <li class="breadcrumb-item active">View warehouse</li>
+            <li class="breadcrumb-item"><a href="#">User</a></li>
+            <li class="breadcrumb-item active">View User</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -24,7 +24,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  View warehouse
+                  View User
                 </h3>
                 
               </div><!-- /.card-header -->
@@ -38,22 +38,22 @@
                       <thead>
                         <tr>
                           <th>No.</th>
-                          <th>Title</th>
-                          <th>Location</th>
-                          <th>Status</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Role Id</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php $no=1;?>
-                          @foreach($warehouse as $key => $value)
+                          @foreach($user as $key => $value)
                           <tr>
                             <td >{{$no++}}</td>
-                            <td >{{$value->title}}</td>
-                            <td >{{$value->location }}</td>
-                            <td >{{$value->status }}</td>
+                            <td >{{$value->name}}</td>
+                            <td >{{$value->email }}</td>
+                            <td >{{$value->role_id }}</td>
                             
                             <td style="text-align: center;">
-                              <a class="btn btn-info btn-sm" href="{{route('warehouse.show',$value->id)}}">
+                              <a class="btn btn-info btn-sm" href="{{route('user.show',$value->id)}}">
                                 <i class="glyphicon glyphicon-th-large" style="font-size: 10px">Show</i>
                               </a>
                             </td>

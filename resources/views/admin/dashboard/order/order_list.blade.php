@@ -3,13 +3,13 @@
 @section('content_header')
     <div class="row mb-2">
       <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Warehouse</h1>
+          <h1 class="m-0 text-dark">Order</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Warehouse</a></li>
-            <li class="breadcrumb-item active">View warehouse</li>
+            <li class="breadcrumb-item"><a href="#">Order</a></li>
+            <li class="breadcrumb-item active">View Order</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -24,7 +24,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  View warehouse
+                  View Order
                 </h3>
                 
               </div><!-- /.card-header -->
@@ -33,28 +33,34 @@
                 <div class="tab-content p-0">
                   
                   <!-- Main card content.. -->
-                  <div class="container col-md-12">
+
+                    <div class="container col-md-12">
                     <table class="table table-bordered table-hover">
                       <thead>
                         <tr>
                           <th>No.</th>
+                          <th>User ID</th>
                           <th>Title</th>
-                          <th>Location</th>
                           <th>Status</th>
+                          <th>Payment</th>
+                          <th>Discount</th>
+                          <th>Discount Unit</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php $no=1;?>
-                          @foreach($warehouse as $key => $value)
+                          @foreach($order as $key => $value)
                           <tr>
                             <td >{{$no++}}</td>
+                            <td >{{$value->user_id}}</td>
                             <td >{{$value->title}}</td>
-                            <td >{{$value->location }}</td>
-                            <td >{{$value->status }}</td>
-                            
+                            <td >{{$value->status}}</td>
+                            <td >{{$value->payment}}</td>
+                            <td >{{$value->discount}}</td>
+                            <td >{{$value->discount_unit}}</td>
                             <td style="text-align: center;">
-                              <a class="btn btn-info btn-sm" href="{{route('warehouse.show',$value->id)}}">
-                                <i class="glyphicon glyphicon-th-large" style="font-size: 10px">Show</i>
+                              <a class="btn btn-info btn-sm" href="{{route('order.show',$value->id)}}">
+                                <i class="" style="font-size: 10px">Show</i>
                               </a>
                             </td>
                           </tr>
@@ -62,8 +68,6 @@
                       </tbody>
                     </table>
                   </div>
-                  
-
 
                   <!-- /.Main card-content.. -->
        

@@ -3,9 +3,9 @@
                               <div class="form-group">
                                 {{Form::label('category_id','Category')}}
                                 <div class="form-group {{$errors->has('category_id') ? 'has-error' : ''}} "></div>
-                                {{Form::text('product_category_id', null,['class'=>'form-control','id'=>'product_category_id','placeholder'=>'Enter Category ID'])}}
-                                
-                                <!-- {{$errors->first('category_id','<p class="help-block">:message</p>')}} -->
+                                {{Form::select('product_category_id', $category_name, null, ['class' => 'form-control', 'id' => 'product_category_id'])}}
+
+                                {{$errors->first('product_category_id','message')}}
                                     
                               </div>
                           </div>    

@@ -26,8 +26,12 @@ class ProductMasterController extends Controller
      */
     public function create()
     {
-        $categories = ProductCategory::with('product_master')->get();
-        return view('admin.dashboard.product.product_create', compact('categories'));
+        $category = ProductCategory::with('product_master')->get();
+        $category_name = [];
+        foreach($category as $categories){
+            $category_name[$categories->id] = $categories->title;
+        }
+        return view('admin.dashboard.product.product_create', compact('category_name'));
     }
 
     /**
@@ -75,8 +79,15 @@ class ProductMasterController extends Controller
      */
     public function edit($id)
     {
+        $category = ProductCategory::with('product_master')->get();
+        
+        $category_name = [];
+        foreach($category as $categories){
+            $category_name[$categories->id] = $categories->title;
+        }
+
         $product = ProductMaster::find($id);
-        return view('admin.dashboard.product.product_update',compact('product'));
+        return view('admin.dashboard.product.product_update',compact('product', 'category_name'));
     }
 
     /**

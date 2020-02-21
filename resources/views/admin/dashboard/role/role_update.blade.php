@@ -26,13 +26,7 @@
                   <i class="fas mr-1"></i>
                   Edit Role
                 </h3>
-                <!-- <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Save</a>
-                    </li>
-                  </ul>
-                </div> -->
+                
               </div><!-- /.card-header -->
 
               <div class="card-body">
@@ -40,11 +34,9 @@
                   
                   <!-- Main card content.. -->
 
-
-
+                  {{ Form::model($role, ['route'=>['role.update',$role->id],'method'=>'PATCH']) }}
                   @include('admin.dashboard.role.role_master')
-
-
+                  {{ Form::close() }}
 
 
 

@@ -33,8 +33,8 @@
                 <div class="tab-content p-0">
                   
                   <!-- Main card content.. -->
-                  <div class="container">
-                    <table class="table table-bordered table-responsive table-hover">
+                  <div class="container col-md-12">
+                    <table class="table table-bordered table-hover">
                       <thead>
                         <tr>
                           <th>No.</th>
@@ -49,7 +49,6 @@
                           <th>Thersold</th>
                           <th>Created By</th>
                           <th>Modified By</th>
-                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -57,7 +56,7 @@
                           @foreach($product as $key => $value)
                           <tr>
                             <td >{{$no++}}</td>
-                            <td >{{$value->category_id}}</td>
+                            <td >{{$value->product_category_id}}</td>
                             <td >{{$value->title }}</td>
                             <td >{{$value->short_desc }}</td>
                             <!-- <td >{{$value->long_desc }}</td> -->

@@ -40,6 +40,14 @@ Route::resource('category', 'ProductCategoryController');
 
 Route::resource('warehouse', 'WarehouseController');
 
+Route::resource('order', 'OrderMasterController');
+
+Route::resource('role', 'RoleController');
+
+Route::resource('user', 'UserController');
+
+// Route::resource('role', 'OrderMasterController');
+
 Route::get('/test', 'ProductMasterController@test');
 
 // Route::group(['middleware' => ['auth', 'role:admin']], function(){

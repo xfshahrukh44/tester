@@ -3,13 +3,13 @@
 @section('content_header')
     <div class="row mb-2">
       <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Role</h1>
+          <h1 class="m-0 text-dark">Order</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Role</a></li>
-            <li class="breadcrumb-item active">Add Role</li>
+            <li class="breadcrumb-item"><a href="#">Order</a></li>
+            <li class="breadcrumb-item active">Edit Order</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -24,8 +24,9 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  Add Role
+                  Edit Order
                 </h3>
+                
               </div><!-- /.card-header -->
 
               <div class="card-body">
@@ -33,9 +34,10 @@
                   
                   <!-- Main card content.. -->
 
-                  {{Form::open(['route' => 'role.store', 'method' => 'POST'])}}
-                  @include('admin.dashboard.role.role_master')
+                  {{ Form::model($order, ['route'=>['order.update',$order->id],'method'=>'PATCH']) }}
+                  @include('admin.dashboard.order.order_master')
                   {{ Form::close() }}
+
 
 
                   <!-- /.Main card-content.. -->

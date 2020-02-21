@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\OrderMaster;
-use App\Model\OrderItems;
-use App\User;
+use Spatie\Permission\Models\Role;
 
-class OrderMasterController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class OrderMasterController extends Controller
      */
     public function index()
     {
-        $order = OrderMaster::all();
-        return view('admin.dashboard.order.order_list', compact('order'));
+        $role = Role::all();
+        return view('admin.dashboard.role.role_list', compact('role'));
     }
 
     /**
@@ -27,7 +25,7 @@ class OrderMasterController extends Controller
      */
     public function create()
     {
-        return view('admin.dashboard.order.order_create');
+        return view('admin.dashboard.role.role_create');
     }
 
     /**
@@ -38,13 +36,11 @@ class OrderMasterController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[  
-            'title' => 'required|string|max:250',
-            'discount' => 'required|int',
-            'status' => 'required',
+        $this->validate($request,[ 
+            'name' => 'required|string|max:250',
         ]);
-        OrderMaster::create($request->all());
-        return redirect()->route('order.index')->with('success','Order Created Successfully');
+        Role::create(['name' => $request->name]);
+        return redirect()->route('role.index')->with('success','Record Created Successfully');
     }
 
     /**
@@ -55,8 +51,8 @@ class OrderMasterController extends Controller
      */
     public function show($id)
     {
-        $order = OrderMaster::find($id);
-        return view('admin.dashboard.order.order_detail',compact('order'));
+        $role = Role::findById($id);
+        return view('admin.dashboard.role.role_detail',compact('role'));
     }
 
     /**
@@ -67,8 +63,8 @@ class OrderMasterController extends Controller
      */
     public function edit($id)
     {
-        $order = OrderMaster::find($id);
-        return view('admin.dashboard.order.order_update',compact('order'));
+        $role = Role::findById($id);
+        return view('admin.dashboard.role.role_update',compact('role'));
     }
 
     /**
@@ -80,13 +76,11 @@ class OrderMasterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[  
-            'title' => 'required|string|max:250',
-            'discount' => 'required|int',
-            'status' => 'required',
+        $this->validate($request,[ 
+            'name' => 'required|string|max:250',
         ]);
-        OrderMaster::find($id)->update($request->all());
-        return redirect()->route('order.index')->with('success','Order Updated Successfully');
+        Role::findById($id)->update($request->all());
+        return redirect()->route('role.index')->with('success','Record Updated Successfully');
     }
 
     /**
@@ -97,7 +91,7 @@ class OrderMasterController extends Controller
      */
     public function destroy($id)
     {
-        OrderMaster::find($id)->delete();
-        return redirect()->route('order.index')->with('success','Order Deleted Successfully');
+        Role::findById($id)->delete();
+        return redirect()->route('role.index')->with('success','Record Deleted Successfully');
     }
 }
