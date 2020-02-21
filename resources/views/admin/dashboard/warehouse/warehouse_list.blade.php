@@ -54,8 +54,7 @@
                             <td >{{$value->status }}</td>
                             
                             <td style="text-align: center;">
-                              <a class="btn btn-info btn-sm" href="{{route('warehouse.show',$value->id)}}">
-                                <i class="glyphicon glyphicon-th-large" style="font-size: 10px">Show</i>
+                              <a class="btn btn-info btn-sm" href="{{route('warehouse.show',$value->id)}}" style="font-size: 10px">Show
                               </a>
                             </td>
                             <!-- <td style="font-size: 10px; text-align: center;">

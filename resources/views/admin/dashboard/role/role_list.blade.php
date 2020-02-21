@@ -24,35 +24,43 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  View Role
+                  Role List
                 </h3>
-                <!-- <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Save</a>
-                    </li>
-                  </ul>
-                </div> -->
+                
               </div><!-- /.card-header -->
 
               <div class="card-body">
                 <div class="tab-content p-0">
                   
                   <!-- Main card content.. -->
-
-                  <table class="table table-bordered table-responsive table-hover">
-                    <thead>
-                      <tr>
-                        <th>Role ID</th>
-                        <th>Role Name</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <td></td>
-                      <td></td>
-                    </tbody>
-                  </table>
-
+                  <div class="container col-md-12">
+                    <table class="table table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th>No.</th>
+                          <th>Role Name</th>
+                          <th>Guard Name</th>
+                          <th style="text-align: center;"><a class="btn btn-success" style="font-size: 10px" href="{{route('role.create')}}">Add</a></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php $no=1;?>
+                          @foreach($role as $key => $value)
+                          <tr>
+                            <td >{{$no++}}</td>
+                            <td >{{$value->name}}</td>
+                            <td >{{$value->guard_name }}</td>
+                            
+                            <td style="text-align: center;">
+                              <a class="btn btn-info btn-sm" href="{{route('role.show',$value->id)}}" style="font-size: 10px">Show
+                              </a>
+                            </td>
+                          </tr>
+                          @endforeach 
+                      </tbody>
+                    </table>
+                  </div>
+                  
 
 
                   <!-- /.Main card-content.. -->

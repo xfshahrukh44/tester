@@ -52,8 +52,7 @@
                             <td >{{$value->title}}</td>
                             <td >{{$value->parent}}</td>
                             <td style="text-align: center;">
-                              <a class="btn btn-info btn-sm" href="{{route('category.show',$value->id)}}">
-                                <i class="" style="font-size: 10px">Show</i>
+                              <a class="btn btn-info btn-sm" href="{{route('category.show',$value->id)}}"style="font-size: 10px">Show
                               </a>
                             </td>
                           </tr>

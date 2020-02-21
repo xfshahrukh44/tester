@@ -37,7 +37,7 @@
                       
                     </div>
 
-                    <table class="table table-bordered table-responsive table-hover">
+                    <table class="table table-bordered table-hover">
                       <thead>
                         <tr>
                           <th>No.</th>
@@ -74,8 +74,7 @@
                             <td >{{$value->modified_by }}</td>
                             
                             <td style="text-align: center;">
-                              <a class="btn btn-info btn-sm" href="{{route('product.show',$value->id)}}">
-                                <i class="glyphicon glyphicon-th-large" style="font-size: 10px">Show</i>
+                              <a class="btn btn-info btn-sm" href="{{route('product.show',$value->id)}}" style="font-size: 10px">Show
                               </a>
                             </td>
                             <!-- <td style="font-size: 10px; text-align: center;">
