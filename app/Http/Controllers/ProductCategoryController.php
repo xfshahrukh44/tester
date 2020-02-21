@@ -79,7 +79,6 @@ class ProductCategoryController extends Controller
     {
         $this->validate($request,[ 
             'title' => 'required|string|max:250',
-            'parent' => 'string|max:250',
         ]);
         ProductCategory::find($id)->update($request->all());
         return redirect()->route('category.index')->with('success','Record Updated Successfully');

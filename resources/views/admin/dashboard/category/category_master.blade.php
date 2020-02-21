@@ -2,14 +2,16 @@
                           <div class="col-md-4">
                               <div class="form-group">
                                 {{ Form::label('title', 'Category Title') }}
-                                {{ Form::text('title', null, ['class'=>'form-control', 'placeholder'=>'Enter Category Name']) }}
+                                <div class="form-group {{$errors->has('title') ? 'has-error' : ''}} "></div>
+                                {{ Form::text('title', null, ['class'=>'form-control','id' => 'title','placeholder'=>'Enter Category Name']) }}
                               </div>
                           </div>
 
                           <div class="col-md-4">
                               <div class="form-group">
                                 {{ Form::label('parent', 'Parent') }}
-                                {{ Form::text('parent', null, ['class'=>'form-control', 'placeholder'=>'Enter Category Parent']) }}
+                                <div class="form-group {{$errors->has('parent') ? 'has-error' : ''}} "></div>
+                                {{ Form::text('parent', null,['class'=>'form-control', 'id' => 'parent','placeholder'=>'Enter Category Parent']) }}
                               </div>
                           </div>
 

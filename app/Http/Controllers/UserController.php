@@ -82,6 +82,7 @@ class UserController extends Controller
         $this->validate($request,[ 
             'name' => 'required|string|max:250',
             'email' => 'required|string|max:250',
+            'role_id' => 'required',
         ]);
         User::find($id)->update($request->all());
         return redirect()->route('user.index')->with('success','Record Updated Successfully');

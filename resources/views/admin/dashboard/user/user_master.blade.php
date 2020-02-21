@@ -24,8 +24,8 @@
 
                               {{Form::label('role_id','Role')}}
 
-                              <div class="form-group {{$errors->has('status') ? 'has-error' : ''}} "></div>
-                              {{Form::select('role_id', $role_name, null, ['class' => 'form-control', 'id' => 'role_id'])}}
+                              <div class="form-group {{$errors->has('role_id') ? 'has-error' : ''}} "></div>
+                              {{Form::select('role_id', $role_name, null, ['class' => 'form-control','id' => 'role_id'])}}
 
                               {{$errors->first('role_id','message')}}
                               <!-- {{$errors->first('unit','<p class="help-block">:message</p>')}} -->
