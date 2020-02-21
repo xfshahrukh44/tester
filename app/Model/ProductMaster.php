@@ -9,7 +9,7 @@ class ProductMaster extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['category_id', 'title', 'short_desc', 'long_desc', 'unit', 'price', 'cost', 'discount', 'status', 'created_by', 'modified_by', 'threshold'];
+    protected $fillable = ['product_category_id', 'title', 'short_desc', 'long_desc', 'unit', 'price', 'cost', 'discount', 'status', 'created_by', 'modified_by', 'threshold'];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     

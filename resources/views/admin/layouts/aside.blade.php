@@ -112,6 +112,34 @@
             </ul>
           </li>
 
+          <!-- add class: menu-open for highlight -->
+          <li class="nav-item has-treeview menu-open">
+            <!-- add class active for highlight -->
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Order
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <!-- add class active to highlight -->
+                <a href="{{ asset('order/create') }}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Order</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <!-- add class active to highlight -->
+                <a href="{{ asset('order') }}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Order</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>

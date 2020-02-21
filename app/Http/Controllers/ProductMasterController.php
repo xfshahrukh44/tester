@@ -26,7 +26,14 @@ class ProductMasterController extends Controller
      */
     public function create()
     {
-        return view('admin.dashboard.product.product_create');
+        $category = ProductCategory::with('product_master')->get();
+        
+        $category_name = [];
+        foreach($category as $categories){
+            $category_name[$categories->id] = $categories->id;
+        }
+
+        return view('admin.dashboard.product.product_create', compact('category_name'));
     }
 
     /**
@@ -38,7 +45,7 @@ class ProductMasterController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[ 
-            'category_id' => 'required', 
+            'product_category_id' => 'required', 
             'title' => 'required|string|max:250',
             'short_desc' => 'required|string|max:250',
             'long_desc' => 'required|string',
@@ -73,8 +80,15 @@ class ProductMasterController extends Controller
      */
     public function edit($id)
     {
+        $category = ProductCategory::with('product_master')->get();
+        
+        $category_name = [];
+        foreach($category as $categories){
+            $category_name[$categories->id] = $categories->id;
+        }
+
         $product = ProductMaster::find($id);
-        return view('admin.dashboard.product.product_update',compact('product'));
+        return view('admin.dashboard.product.product_update',compact('product', 'category_name'));
     }
 
     /**
@@ -87,7 +101,7 @@ class ProductMasterController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'category_id' => 'required', 
+            'product_category_id' => 'required', 
             'title' => 'required|string|max:250',
             'short_desc' => 'required|string|max:250',
             'long_desc' => 'required|string',
@@ -115,7 +129,7 @@ class ProductMasterController extends Controller
     }
 
     public function categoryName(){
-        $category = ProductCategory::with('product_master')->get();
-        return view('admin.dashboard.index', compact('category'));
+        
+        // return view('admin.dashboard.index', compact('category_name'));
     }
 }

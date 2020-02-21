@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\OrderMaster;
+use App\Model\OrderItems;
+use App\User;
+
 use Illuminate\Http\Request;
 
 class OrderMasterController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,8 @@ class OrderMasterController extends Controller
      */
     public function index()
     {
-        //
+        $order = OrderMaster::all();
+        return view('admin.dashboard.order.order_list', compact('order'));
     }
 
     /**
@@ -23,7 +29,7 @@ class OrderMasterController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dashboard.order.order_create');
     }
 
     /**
@@ -34,7 +40,13 @@ class OrderMasterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[  
+            'title' => 'required|string|max:250',
+            'discount' => 'required|int',
+            'status' => 'required',
+        ]);
+        OrderMaster::create($request->all());
+        return redirect()->route('order.index')->with('success','Order Created Successfully');
     }
 
     /**
@@ -45,7 +57,8 @@ class OrderMasterController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = OrderMaster::find($id);
+        return view('admin.dashboard.order.order_detail',compact('order'));
     }
 
     /**
@@ -56,7 +69,8 @@ class OrderMasterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = OrderMaster::find($id);
+        return view('admin.dashboard.order.order_update',compact('order'));
     }
 
     /**
@@ -68,7 +82,13 @@ class OrderMasterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[  
+            'title' => 'required|string|max:250',
+            'discount' => 'required|int',
+            'status' => 'required',
+        ]);
+        OrderMaster::find($id)->update($request->all());
+        return redirect()->route('order.index')->with('success','Order Updated Successfully');
     }
 
     /**
@@ -79,6 +99,7 @@ class OrderMasterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        OrderMaster::find($id)->delete();
+        return redirect()->route('order.index')->with('success','Order Deleted Successfully');
     }
 }

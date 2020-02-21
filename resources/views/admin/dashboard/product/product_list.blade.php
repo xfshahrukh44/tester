@@ -57,7 +57,7 @@
                           @foreach($product as $key => $value)
                           <tr>
                             <td >{{$no++}}</td>
-                            <td >{{$value->category_id}}</td>
+                            <td >{{$value->product_category_id}}</td>
                             <td >{{$value->title }}</td>
                             <td >{{$value->short_desc }}</td>
                             <!-- <td >{{$value->long_desc }}</td> -->

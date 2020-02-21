@@ -29,6 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('product', 'ProductMasterController');
 Route::resource('category', 'ProductCategoryController');
+Route::resource('order', 'OrderMasterController');
 
 
 //Route::group(['middleware' => ['auth']], function () {
