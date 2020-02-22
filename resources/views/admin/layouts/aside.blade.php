@@ -8,7 +8,9 @@
            style="opacity: .8"> -->
       <span class="brand-text font-weight-light">ERP Project</span>
     </a>
-
+    <?php
+    $user_detail = "user/".Auth::user()->id;
+    ?>
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -17,7 +19,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div> -->
         <div class="info">
-          <a href="#" class="d-block">{{Auth::user()->name}}</a>
+          <a href="{{$user_detail}}" class="d-block">{{Auth::user()->name}}</a>
         </div>
       </div>
 
@@ -63,34 +65,34 @@
               </p>
             </a>
           </li>
-
-          <li class="nav-item has-treeview">
-            <!-- add class active for highlight -->
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                User Management
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <!-- add class active to highlight -->
-                <a href="{{ asset('user') }}" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Users</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <!-- add class active to highlight -->
-                <a href="{{ asset('role') }}" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Roles</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
+          @role('Admin')
+            <li class="nav-item has-treeview">
+              <!-- add class active for highlight -->
+              <a href="#" class="nav-link ">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  User Management
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <!-- add class active to highlight -->
+                  <a href="{{ asset('user') }}" class="nav-link ">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Users</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <!-- add class active to highlight -->
+                  <a href="{{ asset('role') }}" class="nav-link ">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Roles</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endrole
 <!-- 
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">

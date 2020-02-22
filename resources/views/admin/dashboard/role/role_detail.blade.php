@@ -50,13 +50,18 @@
                     </div>
                   </div>
                   
-                <div class="col-md-12">
-                    <a class="btn btn-success" href="{{route('role.edit', $role->id)}}">Edit</a>
-
+                  @role('Admin')
+                <div class="row">
+                <div class="col-md-6" >
+                    <a class="btn btn-success " style="padding: 1% 47%;" href="{{route('role.edit', $role->id)}}">Edit</a></div>
+            <div class="col-md-6">
                     {{ Form::open(['method' => 'DELETE','route' => ['role.destroy', $role->id]]) }}
-                      <button type="submit" class="btn btn-danger">Delete</button>
+                      <button type="submit" class="btn btn-danger" style="padding: 1% 47%;">Delete</button>
                     {{ Form::close() }}
+                    </div>
                 </div>
+                @endrole
+                
 
 
                   <!-- /.Main card-content.. -->

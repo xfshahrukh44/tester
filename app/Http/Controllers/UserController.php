@@ -8,6 +8,13 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    public function checkPermission() {
+        if(auth()->user()->hasRole('Admin'))
+            return true;
+        else
+            return false;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -60,6 +67,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $role = Role::all();
         
         $role_name = [];
@@ -79,11 +89,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $this->validate($request,[ 
             'name' => 'required|string|max:250',
             'email' => 'required|string|max:250',
             'role_id' => 'required',
         ]);
+        $user = User::find($id);
+        $role = Role::find($request->role_id);
+        $user->syncRoles([$role]);
         User::find($id)->update($request->all());
         return redirect()->route('user.index')->with('success','Record Updated Successfully');
     }
@@ -96,6 +112,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+            
         User::find($id)->delete();
         return redirect()->route('user.index')->with('success','Record Deleted Successfully');
     }

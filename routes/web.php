@@ -25,31 +25,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::view('/createorder', 'admin/dashboard/order/create_order');
-    Route::view('/createcategory', 'admin/dashboard/product/create_category');
-    Route::view('/createproduct', 'admin/dashboard/product/create_product');
-    Route::view('/createrole', 'admin/dashboard/role/create_role');
-    Route::view('/roles', 'admin/dashboard/role/role_list');
-    Route::view('/createwarehouse', 'admin/dashboard/warehouse/create_warehouse');
-    Route::view('/', 'admin/dashboard/index');
+    
+    Route::resource('product', 'ProductMasterController');
+
+    Route::resource('category', 'ProductCategoryController');
+
+    Route::resource('warehouse', 'WarehouseController');
+
+    Route::resource('order', 'OrderMasterController');
+
+    Route::resource('role', 'RoleController');
+
+    Route::resource('user', 'UserController');
+
 });
 
-Route::resource('product', 'ProductMasterController');
 
-Route::resource('category', 'ProductCategoryController');
+// Route::get('/test', 'ProductMasterController@test');
 
-Route::resource('warehouse', 'WarehouseController');
-
-Route::resource('order', 'OrderMasterController');
-
-Route::resource('role', 'RoleController');
-
-Route::resource('user', 'UserController');
-
-// Route::resource('role', 'OrderMasterController');
-
-Route::get('/test', 'ProductMasterController@test');
-
-// Route::group(['middleware' => ['auth', 'role:admin']], function(){
-//     Route::get('dashboard/download/{id}', 'DashboardController@downloadCourse')->name('abc');
+// Route::group(['middleware' => ['auth', 'role:sssss']], function(){
+//     Route::resource('warehouse', 'WarehouseController');
 // });

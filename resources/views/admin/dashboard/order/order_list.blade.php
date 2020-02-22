@@ -45,6 +45,9 @@
                           <th>Payment</th>
                           <th>Discount</th>
                           <th>Discount Unit</th>
+                          <th style = "text-align: center" ><a class="btn btn-success" href="{{route('order.create')}}">
+                                <b class="" style="font-size: 20px">+</b>
+                              </a></th>
                         </tr>
                       </thead>
                       <tbody>

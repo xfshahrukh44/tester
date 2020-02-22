@@ -41,6 +41,10 @@
                           <th>No.</th>
                           <th>Category Title</th>
                           <th>Parent</th>
+                          <th style = "text-align: center" ><a class="btn btn-success" href="{{route('category.create')}}">
+                                <b class="" style="font-size: 20px">+</b>
+                              </a></th>
+                        </tr>
                         </tr>
                       </thead>
                       <tbody>

@@ -41,6 +41,10 @@
                           <th>Title</th>
                           <th>Location</th>
                           <th>Status</th>
+                          <th style = "text-align: center" ><a class="btn btn-success" href="{{route('warehouse.create')}}">
+                                <b class="" style="font-size: 20px">+</b>
+                              </a></th>
+                        </tr>
                         </tr>
                       </thead>
                       <tbody>

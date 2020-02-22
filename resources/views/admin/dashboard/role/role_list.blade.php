@@ -40,6 +40,10 @@
                           <th>No.</th>
                           <th>Role Name</th>
                           <th>Guard Name</th>
+                          <th style = "text-align: center" ><a class="btn btn-success" href="{{route('role.create')}}">
+                                <b class="" style="font-size: 20px">+</b>
+                              </a></th>
+                        </tr>
                         </tr>
                       </thead>
                       <tbody>

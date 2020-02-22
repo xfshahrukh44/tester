@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class ProductMasterController extends Controller
 {
+    public function checkPermission() {
+        if(auth()->user()->hasRole('Admin'))
+            return true;
+        else
+            return false;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,6 +33,9 @@ class ProductMasterController extends Controller
      */
     public function create()
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $category = ProductCategory::with('product_master')->get();
         $category_name = [];
         foreach($category as $categories){
@@ -42,6 +52,9 @@ class ProductMasterController extends Controller
      */
     public function store(Request $request)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $this->validate($request,[ 
             'product_category_id' => 'required', 
             'title' => 'required|string|max:250',
@@ -79,6 +92,9 @@ class ProductMasterController extends Controller
      */
     public function edit($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $category = ProductCategory::with('product_master')->get();
         
         $category_name = [];
@@ -99,6 +115,9 @@ class ProductMasterController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $this->validate($request,[
             'product_category_id' => 'required', 
             'title' => 'required|string|max:250',
@@ -123,6 +142,9 @@ class ProductMasterController extends Controller
      */
     public function destroy($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+            
         ProductMaster::find($id)->delete();
         return redirect()->route('product.index')->with('success','Record Deleted Successfully');
     }

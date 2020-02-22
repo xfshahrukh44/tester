@@ -67,14 +67,19 @@
                         </div>
                     </div>
                   </div>
-                  
-                <div class="col-md-12">
-                    <a class="btn btn-success" href="{{route('product.edit', $product->id)}}">Edit</a>
 
+                @role('Admin')
+                <div class="row">
+                <div class="col-md-6" >
+                    <a class="btn btn-success " style="padding: 1% 47%;" href="{{route('product.edit', $product->id)}}">Edit</a></div>
+            <div class="col-md-6">
                     {{ Form::open(['method' => 'DELETE','route' => ['product.destroy', $product->id]]) }}
-                      <button type="submit" class="btn btn-danger">Delete</button>
+                      <button type="submit" class="btn btn-danger" style="padding: 1% 47%;">Delete</button>
                     {{ Form::close() }}
+                    </div>
                 </div>
+                @endrole
+                
 
 
                   <!-- /.Main card-content.. -->

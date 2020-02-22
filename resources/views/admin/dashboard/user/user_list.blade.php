@@ -41,6 +41,10 @@
                           <th>Name</th>
                           <th>Email</th>
                           <th>Role Id</th>
+                          <th style = "text-align: center" ><a class="btn btn-success" href="{{route('user.create')}}">
+                                <b class="" style="font-size: 20px">+</b>
+                              </a></th>
+                        </tr>
                         </tr>
                       </thead>
                       <tbody>

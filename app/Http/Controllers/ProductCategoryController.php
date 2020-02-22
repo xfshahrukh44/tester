@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
 {
+    public function checkPermission() {
+        if(auth()->user()->hasRole('Admin'))
+            return true;
+        else
+            return false;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +32,9 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         return view('admin.dashboard.category.category_create');
     }
 
@@ -36,6 +46,9 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $this->validate($request,[ 
             'title' => 'required|string|max:250',
             'parent' => 'string|max:250',
@@ -64,6 +77,9 @@ class ProductCategoryController extends Controller
      */
     public function edit($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $category = ProductCategory::find($id);
         return view('admin.dashboard.category.category_update',compact('category'));
     }
@@ -77,6 +93,9 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $this->validate($request,[ 
             'title' => 'required|string|max:250',
         ]);
@@ -92,6 +111,9 @@ class ProductCategoryController extends Controller
      */
     public function destroy($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+            
         ProductCategory::find($id)->delete();
         return redirect()->route('category.index')->with('success','Record Deleted Successfully');
     }

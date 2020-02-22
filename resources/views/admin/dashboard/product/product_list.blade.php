@@ -49,6 +49,10 @@
                           <th>Thersold</th>
                           <th>Created By</th>
                           <th>Modified By</th>
+                          <th style = "text-align: center" ><a class="btn btn-success" href="{{route('product.create')}}">
+                                <b class="" style="font-size: 20px">+</b>
+                              </a></th>
+                        </tr>
                         </tr>
                       </thead>
                       <tbody>
