@@ -15,6 +15,8 @@ class ProductMasterController extends Controller
      */
     public function index()
     {
+        // $category = ProductCategory::with('product_master')->get();
+
         $product = ProductMaster::all();
         return view('admin.dashboard.product.product_list', compact('product'));
     }
@@ -28,12 +30,13 @@ class ProductMasterController extends Controller
     {
         $category = ProductCategory::with('product_master')->get();
         
+        $check = 1;
         $category_name = [];
         foreach($category as $categories){
             $category_name[$categories->id] = $categories->title;
         }
 
-        return view('admin.dashboard.product.product_create', compact('category_name'));
+        return view('admin.dashboard.product.product_create', compact('category_name', 'check'));
     }
 
     /**
@@ -82,13 +85,14 @@ class ProductMasterController extends Controller
     {
         $category = ProductCategory::with('product_master')->get();
         
+        $check = 0;
         $category_name = [];
         foreach($category as $categories){
             $category_name[$categories->id] = $categories->title;
         }
 
         $product = ProductMaster::find($id);
-        return view('admin.dashboard.product.product_update',compact('product', 'category_name'));
+        return view('admin.dashboard.product.product_update',compact('product', 'category_name', 'check'));
     }
 
     /**

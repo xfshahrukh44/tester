@@ -13,8 +13,8 @@ class Warehouse extends Model
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-    public function product_warehouse()
+    public function productmaster()
     {
-        return $this->hasMany('App\Model\ProductWarehouse');
+        return $this->belongsToMany(ProductMaster::class);
     }
 }

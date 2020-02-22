@@ -8,7 +8,7 @@
 
                                 {{$errors->first('product_category_id','message')}}
                               
-                                    
+                                
                               </div>
                           </div>    
                           <div class="col-md-4">
@@ -88,13 +88,24 @@
 
                               </div>
                           </div>
+                          <?php 
+                            $name = null;
+                            $name2 = null;
+                            if($check == 1){
+                              $name = Auth::user()->name;
+                            }
+                            else{
+                              $name = $product->created_by;
+                              $name2 = Auth::user()->name;
+                            }
+                          ?>
+                          
                           <div class="col-md-4">
                               <div class="form-group">
                                 {{Form::label('created_by','Created By')}}
                                 <div class="form-group {{$errors->has('created_by') ? 'has-error' : ''}} "></div>
-                                  {{Form::text('created_by', Auth::user()->name, ['class' => 'form-control','id' => 'created_by', 'placeholder' => 'Created By', 'readonly' => 'true'])}}
+                                  {{Form::text('created_by', $name, ['class' => 'form-control','id' => 'created_by', 'placeholder' => 'Created By', 'readonly' => 'true'])}}
                                   {{$errors->first('created_by','message')}}
-                               
                               </div>
                           </div>
 
@@ -102,7 +113,7 @@
                               <div class="form-group">
                                 {{Form::label('modified_by','Modified By')}}
                                 <div class="form-group {{$errors->has('modified_by') ? 'has-error' : ''}} "></div>
-                                {{Form::text('modified_by', Auth::user()->name, ['class' => 'form-control','id' => 'modified_by', 'placeholder' => 'Modified By','readonly' => 'true'])}}
+                                {{Form::text('modified_by', $name2, ['class' => 'form-control','id' => 'modified_by', 'placeholder' => 'Modified By','readonly' => 'true'])}}
                                 <!-- {{$errors->first('modified_by','message')}} -->
                               </div>
                           </div>

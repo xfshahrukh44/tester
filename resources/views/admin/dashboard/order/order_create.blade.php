@@ -73,29 +73,28 @@
                     @endforeach
                   </select>
 
-                  <button onclick="add();">Add</button>
-                      
-                  <!-- <p id="text1"> </p> -->
-                  <table class="table" id="table">
-                    <thead>
-                      <th>Item</th>
-                    </thead>
-                    <tbody>
-                      <td id="text1"> </td>
-                    </tbody>
-                  </table>
+                  <button class="btn btn-primary" onclick="add();">Add</button>
+                   <br>   
+                  <div class="container">
+                    <table class="table table-bordered" id="table">
+                        <tr>
+                          <th>Item</th>                        
+                        </tr>
+                    </table>
+                  </div>
+                  
 
                       <script>
-                       
-                        var table=document.getElementById("table");
+
 
                         function add()
                         {
-                          var newRow=table.insertRow(table.length),
-                          cell1=newRow.insertCell(0),
-                          orderI = document.getElementById("product_id").value,
-                          cell1 = document.getElementById("text1");
-                          cell1.innerHTML = orderI;
+                          var table = document.getElementById("table"),
+                            newRow = table.insertRow(table.length),                          
+                            cell1 = newRow.insertCell(0),                          
+                            orderI = document.getElementById("product_id").value;
+                            
+                        cell1.innerHTML = orderI;
                         }
                       </script>
 

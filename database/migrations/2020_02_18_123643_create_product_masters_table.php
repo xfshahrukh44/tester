@@ -30,6 +30,13 @@ class CreateProductMastersTable extends Migration
             $table->timestamps();
             $table->softDeletes()->nullable();
         });
+
+        Schema::create('product_master_warehouse', function (Blueprint $table) {
+            $table->integer('product_master_id');
+            $table->integer('warehouse_id');
+            $table->primary(['product_master_id', 'warehouse_id']);            
+
+        });
     }
 
     /**
@@ -40,5 +47,8 @@ class CreateProductMastersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('product_masters');
+
+        Schema::dropIfExists('product_master_warehouse');
+        
     }
 }
