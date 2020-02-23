@@ -7,6 +7,14 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+
+    public function checkPermission() {
+        if(auth()->user()->hasRole('admin'))
+            return true;
+        else
+            return false;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +22,9 @@ class RoleController extends Controller
      */
     public function index()
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $role = Role::all();
         return view('admin.dashboard.role.role_list', compact('role'));
     }
@@ -25,6 +36,9 @@ class RoleController extends Controller
      */
     public function create()
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         return view('admin.dashboard.role.role_create');
     }
 
@@ -36,6 +50,9 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $this->validate($request,[ 
             'name' => 'required|string|max:250',
         ]);
@@ -51,6 +68,9 @@ class RoleController extends Controller
      */
     public function show($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+        
         $role = Role::findById($id);
         return view('admin.dashboard.role.role_detail',compact('role'));
     }
@@ -63,6 +83,9 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $role = Role::findById($id);
         return view('admin.dashboard.role.role_update',compact('role'));
     }
@@ -76,6 +99,9 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $this->validate($request,[ 
             'name' => 'required|string|max:250',
         ]);
@@ -91,6 +117,9 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+        
         Role::findById($id)->delete();
         return redirect()->route('role.index')->with('success','Record Deleted Successfully');
     }

@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class ProductMasterController extends Controller
 {
+    public function checkPermission() {
+        if(auth()->user()->hasRole('admin'))
+            return true;
+        else
+            return false;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,6 +35,9 @@ class ProductMasterController extends Controller
      */
     public function create()
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $category = ProductCategory::with('product_master')->get();
         
         $check = 1;
@@ -47,6 +57,9 @@ class ProductMasterController extends Controller
      */
     public function store(Request $request)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $this->validate($request,[ 
             'product_category_id' => 'required', 
             'title' => 'required|string|max:250',
@@ -83,6 +96,9 @@ class ProductMasterController extends Controller
      */
     public function edit($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $category = ProductCategory::with('product_master')->get();
         
         $check = 0;
@@ -104,6 +120,9 @@ class ProductMasterController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $this->validate($request,[
             'product_category_id' => 'required', 
             'title' => 'required|string|max:250',
@@ -128,12 +147,11 @@ class ProductMasterController extends Controller
      */
     public function destroy($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         ProductMaster::find($id)->delete();
         return redirect()->route('product.index')->with('success','Record Deleted Successfully');
     }
-
-    public function categoryName(){
-        
-        // return view('admin.dashboard.index', compact('category_name'));
-    }
+ 
 }

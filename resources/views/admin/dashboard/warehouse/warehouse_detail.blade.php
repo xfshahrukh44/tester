@@ -7,10 +7,9 @@
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Warehouse</a></li>
-            <li class="breadcrumb-item">View Warehouse</li>
-            <li class="breadcrumb-item active">$warehouse->title</li>
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('warehouse.index') }}">Warehouse</a></li>
+            <li class="breadcrumb-item active">{{$warehouse->title}}</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -55,15 +54,16 @@
                         </div>
                     </div>
                   </div>
-                  
-                <div class="col-md-12">
-                    <a class="btn btn-success" href="{{route('warehouse.edit', $warehouse->id)}}">Edit</a>
+                 
+                  @role('admin')                  
+                  <div class="col-md-12">
+                      <a class="btn btn-success" href="{{route('warehouse.edit', $warehouse->id)}}">Edit</a>
 
-                    {{ Form::open(['method' => 'DELETE','route' => ['warehouse.destroy', $warehouse->id]]) }}
-                      <button type="submit" class="btn btn-danger">Delete</button>
-                    {{ Form::close() }}
-                </div>
-
+                      {{ Form::open(['method' => 'DELETE','route' => ['warehouse.destroy', $warehouse->id]]) }}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                      {{ Form::close() }}
+                  </div>
+                  @endrole
 
                   <!-- /.Main card-content.. -->
        

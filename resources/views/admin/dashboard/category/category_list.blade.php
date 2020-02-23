@@ -7,9 +7,8 @@
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Category</a></li>
-            <li class="breadcrumb-item active">View Category</li>
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item active"><a href="{{ route('category.index') }}">Category</a></li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -35,7 +34,7 @@
                   <!-- Main card content.. -->
 
                     <div class="container">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-responsive table-hover">
                       <thead>
                         <tr>
                           <th>No.</th>

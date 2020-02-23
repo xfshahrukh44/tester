@@ -7,9 +7,8 @@
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Role</a></li>
-            <li class="breadcrumb-item active">View Role</li>
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item active"><a href="{{ route('role.index') }}">Role</a></li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -41,6 +40,7 @@
                           <th>Role Name</th>
                           <th>Guard Name</th>
                           <th style="text-align: center;"><a class="btn btn-success" style="font-size: 10px" href="{{route('role.create')}}">Add</a></th>
+                        </tr>
                         </tr>
                       </thead>
                       <tbody>

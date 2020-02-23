@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class WarehouseController extends Controller
 {
+    public function checkPermission() {
+        if(auth()->user()->hasRole('admin'))
+            return true;
+        else
+            return false;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +32,9 @@ class WarehouseController extends Controller
      */
     public function create()
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         return view('admin.dashboard.warehouse.warehouse_create');
     }
 
@@ -36,6 +46,9 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $this->validate($request,[ 
             'title' => 'required|string|max:250',
             'location' => 'required|string|max:250',
@@ -65,6 +78,9 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $warehouse = Warehouse::find($id);
         return view('admin.dashboard.warehouse.warehouse_update',compact('warehouse'));
     }
@@ -78,6 +94,9 @@ class WarehouseController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $this->validate($request,[ 
             'title' => 'required|string|max:250',
             'location' => 'required|string|max:250',
@@ -94,6 +113,9 @@ class WarehouseController extends Controller
      */
     public function destroy($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+        
         Warehouse::find($id)->delete();
         return redirect()->route('warehouse.index')->with('success','Record Deleted Successfully');
     }

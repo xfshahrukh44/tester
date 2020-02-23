@@ -7,9 +7,8 @@
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Order</a></li>
-            <li class="breadcrumb-item active"><a href="{{ route('order.index') }}">View Order</a></li>
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('order.index') }}">Order</a></li>
             <li class="breadcrumb-item active">{{$order->title}}</li>            
         </ol>
       </div><!-- /.col -->
@@ -73,7 +72,8 @@
                         </div>
                     </div>
                   </div>
-                  
+                
+                @role('admin')
                 <div class="col-md-12">
                     <a class="btn btn-success" href="{{route('order.edit', $order->id)}}">Edit</a>
 
@@ -81,6 +81,7 @@
                       <button type="submit" class="btn btn-danger">Delete</button>
                     {{ Form::close() }}
                 </div>
+                @endrole
                   
 
                   <!-- /.Main card-content.. -->

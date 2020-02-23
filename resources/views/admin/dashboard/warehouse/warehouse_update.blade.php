@@ -7,8 +7,9 @@
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Warehouse</a></li>
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('warehouse.index') }}">Warehouse</a></li>
+            <li class="breadcrumb-item">{{$warehouse->title}}</li>
             <li class="breadcrumb-item active">Edit warehouse</li>
         </ol>
       </div><!-- /.col -->

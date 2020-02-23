@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 
 class OrderMasterController extends Controller
 {
+    public function checkPermission() {
+        if(auth()->user()->hasRole('admin'))
+            return true;
+        else
+            return false;
+    }
 
     /**
      * Display a listing of the resource.
@@ -72,6 +78,9 @@ class OrderMasterController extends Controller
      */
     public function edit($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $order = OrderMaster::find($id);
         return view('admin.dashboard.order.order_update',compact('order'));
     }
@@ -85,6 +94,9 @@ class OrderMasterController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+
         $this->validate($request,[  
             'title' => 'required|string|max:250',
             'discount' => 'required|int',
@@ -102,6 +114,9 @@ class OrderMasterController extends Controller
      */
     public function destroy($id)
     {
+        if(!$this->checkPermission())
+            return redirect('home');
+        
         OrderMaster::find($id)->delete();
         return redirect()->route('order.index')->with('success','Order Deleted Successfully');
     }

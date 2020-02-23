@@ -7,10 +7,9 @@
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">User</a></li>
-            <li class="breadcrumb-item">View User</li>
-            <li class="breadcrumb-item active">$user->title</li>
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('user.index') }}">User</a></li>
+            <li class="breadcrumb-item active">{{$user->name}}</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -56,14 +55,16 @@
                     </div>
                     
                   </div>
-                  
-                <div class="col-md-12">
-                    <a class="btn btn-success" href="{{route('user.edit', $user->id)}}">Edit</a>
+                
+                  @role('admin')
+                  <div class="col-md-12">
+                      <a class="btn btn-success" href="{{route('user.edit', $user->id)}}">Edit</a>
 
-                    {{ Form::open(['method' => 'DELETE','route' => ['user.destroy', $user->id]]) }}
-                      <button type="submit" class="btn btn-danger">Delete</button>
-                    {{ Form::close() }}
-                </div>
+                      {{ Form::open(['method' => 'DELETE','route' => ['user.destroy', $user->id]]) }}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                      {{ Form::close() }}
+                  </div>
+                  @endrole
 
 
                   <!-- /.Main card-content.. -->

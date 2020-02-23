@@ -1,9 +1,10 @@
-
-                        <div class="">
+<!-- form start -->
+                        <div class="row">
                           <div class="col-md-4">
                             <div class="form-group">
                               {{Form::label('name','Role Name')}}
-                              {{Form::text('name', null,['class' => 'form-control','id' => 'id','placeholder' => 'Enter Role'])}} 
+                              {{Form::text('name', null,['class' => 'form-control','id' => 'id','placeholder' => 'Enter Role'])}}
+                              
                           </div>
                           </div>
 
@@ -12,4 +13,4 @@
                           </div>
                         </div>
                           
-                        
+                          

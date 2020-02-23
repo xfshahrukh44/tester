@@ -7,9 +7,8 @@
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Category</a></li>
-            <li class="breadcrumb-item active"><a href="{{ route('category.index') }}">View Category</a></li>
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('category.index') }}">Category</a></li>
             <li class="breadcrumb-item active">{{$category->title}}</li>            
         </ol>
       </div><!-- /.col -->
@@ -50,14 +49,15 @@
                     </div>
                   </div>
                   
-                <div class="col-md-12">
+                  @role('admin')
+                  <div class="col-md-12">
                     <a class="btn btn-success" href="{{route('category.edit', $category->id)}}">Edit</a>
 
                     {{ Form::open(['method' => 'DELETE','route' => ['category.destroy', $category->id]]) }}
                       <button type="submit" class="btn btn-danger">Delete</button>
                     {{ Form::close() }}
                 </div>
-                  
+                @endrole                  
 
                   <!-- /.Main card-content.. -->
        

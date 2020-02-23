@@ -7,9 +7,8 @@
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Product</a></li>
-            <li class="breadcrumb-item active">View product</li>
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item activr"><a href="{{ route('product.index') }}">Product</a></li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -37,7 +36,7 @@
                       
                     </div>
 
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-responsive table-hover">
                       <thead>
                         <tr>
                           <th>No.</th>
