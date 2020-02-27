@@ -139,11 +139,12 @@ class OrderMasterController extends Controller
 
     public function cart(Request $request)
     {
-        print_r($request->all());
-
-        // $order = OrderMaster::find($request->order_master_id);
-        // $order->product_masters()->attach($request->product_master_id,['discount'=> $request->discount, 'discount_unit'=> $request->discount_unit]);
-        // return redirect()->route('order.index')->with('success','Order Created Successfully');
+        if(!$this->checkPermission())
+            return redirect('home');
+        
+        $order = OrderMaster::find($request->order_master_id);
+        $order->product_masters()->attach($request->product_master_id,['discount'=> $request->discount, 'discount_unit'=> $request->discount_unit]);
+        return redirect()->route('order.index')->with('success','Order Created Successfully');
     }
 
 }

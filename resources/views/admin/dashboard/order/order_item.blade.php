@@ -46,7 +46,7 @@
                                      
                     <div class="container">
                       <div class="row">
-                      <form action="cart" method="POST">
+                      <form action="cart" method="GET">
                         <table class="table table-bordered table-responsive-lg table-hover" id="table">
                               <thead>
                                 <tr>
@@ -82,8 +82,8 @@
                                       "@endforeach"+
                                     "</select>"+
                                   "</td>"+
-                                  "<td><input type='text' class='form-control' id='discount' name='discount' value='{{$order_master->discount}}' ></td>"+
-                                  "<td><input type='text' class='form-control' id='discount_unit' name='discount_unit' value='{{$order_master->discount_unit}}' ></td>"+
+                                  "<td><input type='hidden' class='form-control' id='discount' name='discount' value='{{$order_master->discount}}' ></td>"+
+                                  "<td><input type='hidden' class='form-control' id='discount_unit' name='discount_unit' value='{{$order_master->discount_unit}}' ></td>"+
                                   "<td style='text-align: center;'><input type='checkbox' name='record' class='form-control'></td> </tr>";
                                   $("table tbody").append(markup);
                               });
