@@ -24,9 +24,9 @@ class ProductMaster extends Model
         return $this->belongsToMany(Warehouse::class);
     }
 
-    public function order_item()
+    public function order_masters()
     {
-        return $this->hasMany('App\Model\OrderItem');
+        return $this->belongsToMany('App\Model\OrderMaster');
     }
 
 }

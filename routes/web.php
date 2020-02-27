@@ -26,4 +26,6 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('warehouse', 'WarehouseController');
 	Route::resource('role', 'RoleController');
 	Route::resource('user', 'UserController');
+
+	Route::get('/cart', 'OrderMasterController@cart')->name('order.cart');
 });

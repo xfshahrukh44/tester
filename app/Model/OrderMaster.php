@@ -13,9 +13,9 @@ class OrderMaster extends Model
 	
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-    public function order_item()
+    public function product_masters()
     {
-        return $this->hasMany('App\Model\OrderItem');
+        return $this->belongsToMany('App\Model\ProductMaster');
     }
 
     public function order_user()

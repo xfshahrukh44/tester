@@ -34,7 +34,7 @@
                   <!-- Main card content.. -->
 
                     <div class="container">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-responsive-lg table-hover">
                       <thead>
                         <tr>
                           <th>No.</th>

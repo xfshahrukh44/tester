@@ -37,7 +37,11 @@ class OrderMasterController extends Controller
     public function create()
     {
         $product = ProductMaster::all();
-
+        
+        // $product_list = [];
+        // foreach($product as $products){
+        //     $product_list[$products->id] = $products->title;
+        // }
         return view('admin.dashboard.order.order_create', compact('product'));
     }
 
@@ -54,8 +58,20 @@ class OrderMasterController extends Controller
             'discount' => 'required|int',
             'status' => 'required',
         ]);
-        OrderMaster::create($request->all());
-        return redirect()->route('order.index')->with('success','Order Created Successfully');
+        $order_master = OrderMaster::create($request->all());
+
+        $product = ProductMaster::all();
+
+        $order = $order_master->id;
+
+        // $product_list = [];
+        // foreach($product as $products){
+        //     $product_list[$products->id] = $products->title;
+        // }
+        
+        return view('admin.dashboard.order.order_item', compact('order_master', 'order', 'product'));
+
+        // return redirect()->route('order.index')->with('success','Order Created Successfully');
     }
 
     /**
@@ -119,6 +135,15 @@ class OrderMasterController extends Controller
         
         OrderMaster::find($id)->delete();
         return redirect()->route('order.index')->with('success','Order Deleted Successfully');
+    }
+
+    public function cart(Request $request)
+    {
+        print_r($request->all());
+
+        // $order = OrderMaster::find($request->order_master_id);
+        // $order->product_masters()->attach($request->product_master_id,['discount'=> $request->discount, 'discount_unit'=> $request->discount_unit]);
+        // return redirect()->route('order.index')->with('success','Order Created Successfully');
     }
 
 }

@@ -1,3 +1,4 @@
+
                       <div class="row">                        
                           <div class="col-md-4">
                               <div class="form-group">
@@ -44,5 +45,5 @@
 
                           <div class="col-md-12">
                               {{Form::button(isset($model)? 'Update' : 'Save', ['class' => 'btn btn-primary','type' => 'submit'])}}
-                          </div>   
+                          </div>
                       </div>

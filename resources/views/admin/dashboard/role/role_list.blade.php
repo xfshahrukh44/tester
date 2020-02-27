@@ -33,7 +33,7 @@
                   
                   <!-- Main card content.. -->
                   <div class="container col-md-12">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-responsive-lg table-hover">
                       <thead>
                         <tr>
                           <th>No.</th>
