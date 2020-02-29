@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Model\ProductMaster;
 use App\Model\ProductCategory;
+use App\Model\Log;
+use App\User;
+use Auth;
+
 use Illuminate\Http\Request;
 
 class ProductMasterController extends Controller
@@ -72,7 +76,11 @@ class ProductMasterController extends Controller
             // 'created_by' => 'required',
             'threshold' => 'required',
         ]);
+                
         ProductMaster::create($request->all());
+
+        Log::create(['module_name'=>'product_create', 'user_id'=>Auth::id()]);
+
         return redirect()->route('product.index')->with('success','Record Created Successfully');
     }
 
@@ -135,7 +143,11 @@ class ProductMasterController extends Controller
             // 'created_by' => 'required',
             'threshold' => 'required',
         ]);
+
         ProductMaster::find($id)->update($request->all());
+
+        Log::create(['module_name'=>'product_update', 'user_id'=>Auth::id()]);
+
         return redirect()->route('product.index')->with('success','Record Updated Successfully');
     }
 
@@ -149,8 +161,11 @@ class ProductMasterController extends Controller
     {
         if(!$this->checkPermission())
             return redirect('home');
-
+    
         ProductMaster::find($id)->delete();
+
+        Log::create(['module_name'=>'product_delete', 'user_id'=>Auth::id()]);
+
         return redirect()->route('product.index')->with('success','Record Deleted Successfully');
     }
  

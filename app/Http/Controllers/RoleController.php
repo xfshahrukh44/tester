@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Model\Log;
+use Auth;
 
 class RoleController extends Controller
 {
@@ -26,6 +28,8 @@ class RoleController extends Controller
             return redirect('home');
 
         $role = Role::all();
+
+
         return view('admin.dashboard.role.role_list', compact('role'));
     }
 
@@ -57,6 +61,9 @@ class RoleController extends Controller
             'name' => 'required|string|max:250',
         ]);
         Role::create(['name' => $request->name]);
+
+        Log::create(['module_name'=>'role_create', 'user_id'=>Auth::id()]);
+
         return redirect()->route('role.index')->with('success','Record Created Successfully');
     }
 
@@ -106,6 +113,9 @@ class RoleController extends Controller
             'name' => 'required|string|max:250',
         ]);
         Role::findById($id)->update($request->all());
+
+        Log::create(['module_name'=>'role_update', 'user_id'=>Auth::id()]);
+
         return redirect()->route('role.index')->with('success','Record Updated Successfully');
     }
 
@@ -121,6 +131,9 @@ class RoleController extends Controller
             return redirect('home');
         
         Role::findById($id)->delete();
+
+        Log::create(['module_name'=>'role_delete', 'user_id'=>Auth::id()]);
+
         return redirect()->route('role.index')->with('success','Record Deleted Successfully');
     }
 }

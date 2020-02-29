@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Model\Log;
+use Auth;
 
 class UserController extends Controller
 {
@@ -109,6 +111,9 @@ class UserController extends Controller
         $user->syncRoles([$role]);
 
         User::find($id)->update($request->all());
+
+        Log::create(['module_name'=>'user_update', 'user_id'=>Auth::id()]);
+
         return redirect()->route('user.index')->with('success','Record Updated Successfully');
     }
 
@@ -124,6 +129,9 @@ class UserController extends Controller
             return redirect('home');
         
         User::find($id)->delete();
+
+        Log::create(['module_name'=>'user_delete', 'user_id'=>Auth::id()]);
+
         return redirect()->route('user.index')->with('success','Record Deleted Successfully');
     }
 }

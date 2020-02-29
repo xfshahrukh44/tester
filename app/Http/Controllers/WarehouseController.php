@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\Warehouse;
 use Illuminate\Http\Request;
+use App\Model\Log;
+use Auth;
 
 class WarehouseController extends Controller
 {
@@ -55,6 +57,9 @@ class WarehouseController extends Controller
         ]);
 
         Warehouse::create($request->all());
+
+        Log::create(['module_name'=>'warehouse_create', 'user_id'=>Auth::id()]);
+
         return redirect()->route('warehouse.index')->with('success','Record Created Successfully');
     }
 
@@ -102,6 +107,9 @@ class WarehouseController extends Controller
             'location' => 'required|string|max:250',
         ]);
         Warehouse::find($id)->update($request->all());
+
+        Log::create(['module_name'=>'warehouse_update', 'user_id'=>Auth::id()]);
+
         return redirect()->route('warehouse.index')->with('success','Record Updated Successfully');
     }
 
@@ -117,6 +125,9 @@ class WarehouseController extends Controller
             return redirect('home');
         
         Warehouse::find($id)->delete();
+
+        Log::create(['module_name'=>'warehouse_delete', 'user_id'=>Auth::id()]);
+
         return redirect()->route('warehouse.index')->with('success','Record Deleted Successfully');
     }
 }

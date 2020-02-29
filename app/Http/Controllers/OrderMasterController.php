@@ -6,7 +6,8 @@ use App\Model\OrderMaster;
 use App\Model\OrderItems;
 use App\Model\ProductMaster;
 use App\User;
-
+use App\Model\Log;
+use Auth;
 use Illuminate\Http\Request;
 
 class OrderMasterController extends Controller
@@ -68,6 +69,7 @@ class OrderMasterController extends Controller
         // foreach($product as $products){
         //     $product_list[$products->id] = $products->title;
         // }
+        Log::create(['module_name'=>'order_create', 'user_id'=>Auth::id()]);
         
         return view('admin.dashboard.order.order_item', compact('order_master', 'order', 'product'));
 
@@ -118,7 +120,11 @@ class OrderMasterController extends Controller
             'discount' => 'required|int',
             'status' => 'required',
         ]);
+
         OrderMaster::find($id)->update($request->all());
+
+        Log::create(['module_name'=>'order_update', 'user_id'=>Auth::id()]);
+
         return redirect()->route('order.index')->with('success','Order Updated Successfully');
     }
 
@@ -133,7 +139,11 @@ class OrderMasterController extends Controller
         if(!$this->checkPermission())
             return redirect('home');
         
+        
         OrderMaster::find($id)->delete();
+
+        Log::create(['module_name'=>'order_update', 'user_id'=>Auth::id()]);
+
         return redirect()->route('order.index')->with('success','Order Deleted Successfully');
     }
 
@@ -143,7 +153,11 @@ class OrderMasterController extends Controller
             return redirect('home');
         
         $order = OrderMaster::find($request->order_master_id);
-        $order->product_masters()->attach($request->product_master_id,['discount'=> $request->discount, 'discount_unit'=> $request->discount_unit]);
+
+        for($i = 0; $i < count($request->product_master_id); $i++)
+        {
+            $order->product_masters()->attach($request->product_master_id[$i], ['discount'=> $request->discount, 'discount_unit'=> $request->discount_unit]);
+        }
         return redirect()->route('order.index')->with('success','Order Created Successfully');
     }
 

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Model\ProductCategory;
+use App\Model\Log;
 use Illuminate\Http\Request;
+
+use Auth;
 
 class ProductCategoryController extends Controller
 {
@@ -52,7 +55,11 @@ class ProductCategoryController extends Controller
         $this->validate($request,[ 
             'title' => 'required'
         ]);
+        
         ProductCategory::create($request->all());
+
+        Log::create(['module_name'=>'category_create', 'user_id'=>Auth::id()]);
+
         return redirect()->route('category.index')->with('success','Record Created Successfully');
     }
 
@@ -98,7 +105,11 @@ class ProductCategoryController extends Controller
         $this->validate($request,[ 
             'title' => 'required' 
         ]);
+
         ProductCategory::find($id)->update($request->all());
+
+        Log::create(['module_name'=>'category_update', 'user_id'=>Auth::id()]);
+        
         return redirect()->route('category.index')->with('success','Record Updated Successfully');
     }
 
@@ -113,7 +124,11 @@ class ProductCategoryController extends Controller
         if(!$this->checkPermission())
             return redirect('home');
         
+        
         ProductCategory::find($id)->delete();
+
+        Log::create(['module_name'=>'category_delete', 'user_id'=>Auth::id()]);
+
         return redirect()->route('category.index')->with('success','Record Deleted Successfully');
     }
 }

@@ -47,21 +47,21 @@
                     <div class="container">
                       <div class="row">
                       <form action="cart" method="GET">
-                        <table class="table table-bordered table-responsive-lg table-hover" id="table">
+                        <table class="table table-bordered table-hover" id="table">
                               <thead>
                                 <tr>
                                   <th width="30%">Order Id</th>
                                   <th>Item</th>
-                                  <th style="text-align: center;" width="30%">
-                                    <button type="button" class="btn btn-success add-row">Add</button> &nbsp;
-                                    <button type="button" class="btn btn-danger delete-row">Remove</button>
-                                  </th>                        
+                                  <th style="text-align: center;" >
+                                    <button type="button" class="btn btn-success add-row">Add</button>
+                                  <button type="button" class="btn btn-danger delete-row">Remove</button>
+                                  </th>                      
                                 </tr>
                               </thead>
                               <tbody>     
                                 <!-- table dynamic rows -->
                               </tbody>
-                              <button type="submit" value="submit">Submit</button>
+                              <button class="btn btn-primary" type="submit" value="submit">Submit</button>
                         </table>
                       </form>
                       </div>
@@ -76,14 +76,14 @@
                                   var markup = "<tr> <td>" + 
                                   "<input type='text' class='form-control' id='order_master_id' name='order_master_id' value='{{$order_master->id}}' readonly='true'></td>" +
                                   "<td>"+
-                                    "<select class='form-control' id='product_master_id' name='product_master_id'>"+
+                                    "<select class='form-control' id='product_master_id[]' name='product_master_id[]'>"+
                                       "@foreach($product as $products)"+
                                         "<option value='{{ $products->id }}'> {{ $products->title }} </option>"+
                                       "@endforeach"+
                                     "</select>"+
                                   "</td>"+
-                                  "<td><input type='hidden' class='form-control' id='discount' name='discount' value='{{$order_master->discount}}' ></td>"+
-                                  "<td><input type='hidden' class='form-control' id='discount_unit' name='discount_unit' value='{{$order_master->discount_unit}}' ></td>"+
+                                  "<input type='hidden' class='form-control' id='discount' name='discount' value='{{$order_master->discount}}' >"+
+                                  "<input type='hidden' class='form-control' id='discount_unit' name='discount_unit' value='{{$order_master->discount_unit}}' >"+
                                   "<td style='text-align: center;'><input type='checkbox' name='record' class='form-control'></td> </tr>";
                                   $("table tbody").append(markup);
                               });
