@@ -47,15 +47,14 @@
                     <div class="container">
                       <div class="row">
                       <form action="cart" method="GET">
-                        <table class="table table-bordered table-hover" id="table">
+                        <table class="table table-bordered table-responsive-lg table-hover" id="table">
                               <thead>
                                 <tr>
-                                  <th width="30%">Order Id</th>
                                   <th>Item</th>
-                                  <th style="text-align: center;" >
+                                  <td style="text-align: center;" colspan="2">
                                     <button type="button" class="btn btn-success add-row">Add</button>
-                                  <button type="button" class="btn btn-danger delete-row">Remove</button>
-                                  </th>                      
+                                    <button type="button" class="btn btn-danger delete-row">Remove</button>
+                                  </td>                      
                                 </tr>
                               </thead>
                               <tbody>     
@@ -73,8 +72,8 @@
                           $(document).ready(function(){
                               $(".add-row").click(function(){
                                   // var product_master_id = $("#product_id").val();
-                                  var markup = "<tr> <td>" + 
-                                  "<input type='text' class='form-control' id='order_master_id' name='order_master_id' value='{{$order_master->id}}' readonly='true'></td>" +
+                                  var markup = "<tr>" + 
+                                  "<input type='hidden' class='form-control' id='order_master_id' name='order_master_id' value='{{$order_master->id}}' readonly='true'>" +
                                   "<td>"+
                                     "<select class='form-control' id='product_master_id[]' name='product_master_id[]'>"+
                                       "@foreach($product as $products)"+

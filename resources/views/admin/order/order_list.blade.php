@@ -38,26 +38,30 @@
                       <thead>
                         <tr>
                           <th>No.</th>
-                          <th>User ID</th>
                           <th>Title</th>
-                          <th>Status</th>
+                          <th>Customer Name</th>
                           <th>Payment</th>
                           <th>Discount</th>
-                          <th>Discount Unit</th>
+                          <th>Status</th>
                           <th style="text-align: center;"><a class="btn btn-success" style="font-size: 10px" href="{{route('order.create')}}">Add</a></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php $no=1;?>
+                        <?php $no=1; $dn = "" ?>
                           @foreach($order as $key => $value)
+                          <?php if($value->discount_unit == "percentage"){
+                              $dn = ' %';
+                          }
+                          else{
+                              $dn = ' Rs.';
+                          } ?>
                           <tr>
                             <td >{{$no++}}</td>
-                            <td >{{$value->user_id}}</td>
                             <td >{{$value->title}}</td>
-                            <td >{{$value->status}}</td>
+                            <td >{{$value->user->name}}</td>                            
                             <td >{{$value->payment}}</td>
-                            <td >{{$value->discount}}</td>
-                            <td >{{$value->discount_unit}}</td>
+                            <td >{{$value->discount . $dn}}</td>
+                            <td >{{$value->status}}</td>
                             <td style="text-align: center;">
                               <a class="btn btn-info btn-sm" href="{{route('order.show',$value->id)}}" style="font-size: 10px">Show
                               </a>

@@ -13,14 +13,13 @@ class CreateOrderMasterProductMasterTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_master_product_master', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('order_item', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('order_master_id');
             $table->integer('product_master_id');
             $table->integer('discount');
             $table->enum('discount_unit', ['percentage', 'amount']);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +30,6 @@ class CreateOrderMasterProductMasterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_master_product_master');
+        Schema::dropIfExists('order_item');
     }
 }

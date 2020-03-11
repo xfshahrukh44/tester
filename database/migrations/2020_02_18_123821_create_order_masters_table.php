@@ -14,15 +14,16 @@ class CreateOrderMastersTable extends Migration
     public function up()
     {
         Schema::create('order_masters', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->increments('id');
             $table->string('title');
-            $table->enum('status', ['draft', 'pending', 'completed']);
+            $table->integer('user_id');
             $table->string('payment');
             $table->integer('discount');
             $table->enum('discount_unit', ['percentage', 'amount']);
+            $table->integer('purchase_unit');
+            $table->enum('status', ['draft', 'pending', 'completed']);          
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->nullable();
         });
     }
 

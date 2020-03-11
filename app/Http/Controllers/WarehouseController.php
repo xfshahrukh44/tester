@@ -24,7 +24,7 @@ class WarehouseController extends Controller
     public function index()
     {
         $warehouse = Warehouse::all();
-        return view('admin.dashboard.warehouse.warehouse_list', compact('warehouse'));
+        return view('admin.warehouse.warehouse_list', compact('warehouse'));
     }
 
     /**
@@ -37,7 +37,7 @@ class WarehouseController extends Controller
         if(!$this->checkPermission())
             return redirect('home');
 
-        return view('admin.dashboard.warehouse.warehouse_create');
+        return view('admin.warehouse.warehouse_create');
     }
 
     /**
@@ -72,7 +72,7 @@ class WarehouseController extends Controller
     public function show($id)
     {
         $warehouse = Warehouse::find($id);
-        return view('admin.dashboard.warehouse.warehouse_detail',compact('warehouse'));
+        return view('admin.warehouse.warehouse_detail',compact('warehouse'));
     }
 
     /**
@@ -87,7 +87,7 @@ class WarehouseController extends Controller
             return redirect('home');
 
         $warehouse = Warehouse::find($id);
-        return view('admin.dashboard.warehouse.warehouse_update',compact('warehouse'));
+        return view('admin.warehouse.warehouse_update',compact('warehouse'));
     }
 
     /**

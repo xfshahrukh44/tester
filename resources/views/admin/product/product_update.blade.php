@@ -3,14 +3,14 @@
 @section('content_header')
     <div class="row mb-2">
       <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Order</h1>
+          <h1 class="m-0 text-dark">Product</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/home">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('order.index') }}">Order</a></li>
-            <li class="breadcrumb-item active">{{$order->title}}</li>            
-            <li class="breadcrumb-item active">Edit Order</li>
+            <li class="breadcrumb-item"><a href="{{ route('product.index') }}">Product</a></li>
+            <li class="breadcrumb-item active">{{$product->title}}</li>
+            <li class="breadcrumb-item active">Edit product</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -25,7 +25,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  Edit Order
+                  Edit Product
                 </h3>
                 
               </div><!-- /.card-header -->
@@ -35,8 +35,8 @@
                   
                   <!-- Main card content.. -->
 
-                  {{ Form::model($order, ['route'=>['order.update',$order->id],'method'=>'PATCH']) }}
-                  @include('admin.dashboard.order.order_master')
+                  {{ Form::model($product, ['route'=>['product.update',$product->id],'method'=>'PATCH']) }}
+                  @include('admin.product.product_master')
                   {{ Form::close() }}
 
 

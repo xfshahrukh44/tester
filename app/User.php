@@ -41,7 +41,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function order_master()
+    public function order_masters()
     {
         return $this->hasMany('App\Model\OrderMaster');
     }

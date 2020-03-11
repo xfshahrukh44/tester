@@ -18,14 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
-	Route::view('/dashboard', 'admin/dashboard/index');
-	Route::view('/home', 'admin/dashboard/index');
+	Route::view('dashboard', 'admin/index');
+	Route::view('home', 'admin/index');
 	Route::resource('product', 'ProductMasterController');
 	Route::resource('category', 'ProductCategoryController');
 	Route::resource('order', 'OrderMasterController');
 	Route::resource('warehouse', 'WarehouseController');
 	Route::resource('role', 'RoleController');
 	Route::resource('user', 'UserController');
-
 	Route::get('/cart', 'OrderMasterController@cart')->name('order.cart');
 });

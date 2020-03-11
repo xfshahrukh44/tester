@@ -3,13 +3,14 @@
 @section('content_header')
     <div class="row mb-2">
       <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Product</h1>
+          <h1 class="m-0 text-dark">Order</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/home">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('product.index') }}">Product</a></li>
-            <li class="breadcrumb-item active">Add Product</li>
+            <li class="breadcrumb-item"><a href="{{ route('order.index') }}">Order</a></li>
+            <li class="breadcrumb-item active">{{$order->title}}</li>            
+            <li class="breadcrumb-item active">Edit Order</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -24,8 +25,9 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  Add Product
+                  Edit Order
                 </h3>
+                
               </div><!-- /.card-header -->
 
               <div class="card-body">
@@ -33,9 +35,10 @@
                   
                   <!-- Main card content.. -->
 
-                  {{Form::open(['route' => 'product.store', 'method' => 'POST'])}}
-                  @include('admin.dashboard.product.product_master')
+                  {{ Form::model($order, ['route'=>['order.update',$order->id],'method'=>'PATCH']) }}
+                  @include('admin.order.order_master')
                   {{ Form::close() }}
+
 
 
                   <!-- /.Main card-content.. -->

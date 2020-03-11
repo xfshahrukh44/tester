@@ -9,7 +9,7 @@ class ProductMaster extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['product_category_id', 'title', 'short_desc', 'long_desc', 'unit', 'price', 'cost', 'discount', 'status', 'created_by', 'modified_by', 'threshold'];
+    protected $fillable = ['title', 'product_category_id', 'unit_id', 'inventory_val', 'price', 'discount', 'threshold', 'status', 'short_desc', 'long_desc',  'created_by', 'modified_by'];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     
@@ -26,7 +26,12 @@ class ProductMaster extends Model
 
     public function order_masters()
     {
-        return $this->belongsToMany('App\Model\OrderMaster');
+        return $this->belongsToMany('App\Model\OrderMaster', 'order_item');
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo('App\Model\Unit');
     }
 
 }

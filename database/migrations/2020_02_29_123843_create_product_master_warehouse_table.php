@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLogsTable extends Migration
+class CreateProductMasterWarehouseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('logs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('module_name');
-            $table->integer('user_id');
+        Schema::create('product_master_warehouse', function (Blueprint $table) {
+            $table->integer('product_master_id');
+            $table->integer('warehouse_id');
+            $table->primary(['product_master_id', 'warehouse_id']);   
             $table->timestamps();
-            $table->softDeletes()->nullable();
         });
     }
 
@@ -29,6 +28,6 @@ class CreateLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logs');
+        Schema::dropIfExists('product_master_warehouse');
     }
 }

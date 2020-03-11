@@ -6,6 +6,7 @@ use App\Model\ProductMaster;
 use App\Model\ProductCategory;
 use App\Model\Log;
 use App\User;
+use App\Model\Unit;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -26,10 +27,24 @@ class ProductMasterController extends Controller
      */
     public function index()
     {
-        // $category = ProductCategory::with('product_master')->get();
+        $unit = Unit::with('products')->get();
+
+        $unit_name = [];
+
+        foreach($unit as $units){
+            $unit_name[$units->id] = $units->name;
+        }
+
+        $category = ProductCategory::with('product_master')->get();
+
+        $check = 1;
+        $category_name = [];
+        foreach($category as $categories){
+            $category_name[$categories->id] = $categories->title;
+        }
 
         $product = ProductMaster::all();
-        return view('admin.dashboard.product.product_list', compact('product'));
+        return view('admin.product.product_list', compact('product', 'category_name', 'check', 'unit_name'));
     }
 
     /**
@@ -50,7 +65,7 @@ class ProductMasterController extends Controller
             $category_name[$categories->id] = $categories->title;
         }
 
-        return view('admin.dashboard.product.product_create', compact('category_name', 'check'));
+        return view('admin.product.product_create', compact('category_name', 'check'));
     }
 
     /**
@@ -65,16 +80,17 @@ class ProductMasterController extends Controller
             return redirect('home');
 
         $this->validate($request,[ 
-            'product_category_id' => 'required', 
             'title' => 'required|string|max:250',
+            'product_category_id' => 'required',
+            'unit_id' => 'required', 
+            'inventory_val' => 'required',
+            'price' => 'required|int',
+            'discount' => 'required|int',
+            'threshold' => 'required',
+            'status' => 'required',
+            // 'created_by' => 'required',            
             'short_desc' => 'required|string|max:250',
             'long_desc' => 'required|string',
-            'price' => 'required|int',
-            'cost' => 'required|int',
-            'discount' => 'required|int',
-            'status' => 'required',
-            // 'created_by' => 'required',
-            'threshold' => 'required',
         ]);
                 
         ProductMaster::create($request->all());
@@ -93,7 +109,7 @@ class ProductMasterController extends Controller
     public function show($id)
     {
         $product = ProductMaster::find($id);
-        return view('admin.dashboard.product.product_detail',compact('product'));
+        return view('admin.product.product_detail',compact('product'));
     }
 
     /**
@@ -107,6 +123,14 @@ class ProductMasterController extends Controller
         if(!$this->checkPermission())
             return redirect('home');
 
+        $unit = Unit::with('products')->get();
+
+        $unit_name = [];
+
+        foreach($unit as $units){
+            $unit_name[$units->id] = $units->name;
+        }
+
         $category = ProductCategory::with('product_master')->get();
         
         $check = 0;
@@ -116,7 +140,7 @@ class ProductMasterController extends Controller
         }
 
         $product = ProductMaster::find($id);
-        return view('admin.dashboard.product.product_update',compact('product', 'category_name', 'check'));
+        return view('admin.product.product_update',compact('product', 'category_name', 'check', 'unit_name'));
     }
 
     /**

@@ -35,15 +35,48 @@
                with font-awesome or any other icon font library -->
 
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="{{ asset('product') }}" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Products
               </p>
             </a>
-          </li>
+          </li> -->
 
+
+    
+          <li class="nav-item has-treeview">
+            <!-- add class active for highlight -->
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Products
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <!-- add class active to highlight -->
+                <a href="{{ asset('category') }}" class="nav-link ">
+                  <i class="fas fa-th nav-icon"></i>
+                  <p>Product Categories</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <!-- add class active to highlight -->
+                <a href="{{ asset('product') }}" class="nav-link ">
+                  <i class="far fa-copy nav-icon"></i>
+                  <p>Product List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+     
+
+
+
+<!-- 
           <li class="nav-item">
             <a href="{{ asset('category') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -51,7 +84,7 @@
                 Categories
               </p>
             </a>
-          </li>
+          </li> -->
 
           <li class="nav-item">
             <a href="{{ asset('order') }}" class="nav-link">

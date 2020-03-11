@@ -25,7 +25,7 @@ class ProductCategoryController extends Controller
     public function index()
     {
         $category = ProductCategory::all();
-        return view('admin.dashboard.category.category_list', compact('category')); 
+        return view('admin.category.category_list', compact('category')); 
     }
 
     /**
@@ -38,7 +38,7 @@ class ProductCategoryController extends Controller
         if(!$this->checkPermission())
             return redirect('home');
 
-        return view('admin.dashboard.category.category_create');
+        return view('admin.category.category_create');
     }
 
     /**
@@ -72,7 +72,7 @@ class ProductCategoryController extends Controller
     public function show($id)
     {
          $category = ProductCategory::find($id);
-        return view('admin.dashboard.category.category_detail',compact('category'));
+        return view('admin.category.category_detail',compact('category'));
     }
 
     /**
@@ -87,7 +87,7 @@ class ProductCategoryController extends Controller
             return redirect('home');
 
         $category = ProductCategory::find($id);
-        return view('admin.dashboard.category.category_update',compact('category'));
+        return view('admin.category.category_update',compact('category'));
     }
 
     /**

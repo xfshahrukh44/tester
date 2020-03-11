@@ -30,7 +30,7 @@ class RoleController extends Controller
         $role = Role::all();
 
 
-        return view('admin.dashboard.role.role_list', compact('role'));
+        return view('admin.role.role_list', compact('role'));
     }
 
     /**
@@ -43,7 +43,7 @@ class RoleController extends Controller
         if(!$this->checkPermission())
             return redirect('home');
 
-        return view('admin.dashboard.role.role_create');
+        return view('admin.role.role_create');
     }
 
     /**
@@ -79,7 +79,7 @@ class RoleController extends Controller
             return redirect('home');
         
         $role = Role::findById($id);
-        return view('admin.dashboard.role.role_detail',compact('role'));
+        return view('admin.role.role_detail',compact('role'));
     }
 
     /**
@@ -94,7 +94,7 @@ class RoleController extends Controller
             return redirect('home');
 
         $role = Role::findById($id);
-        return view('admin.dashboard.role.role_update',compact('role'));
+        return view('admin.role.role_update',compact('role'));
     }
 
     /**

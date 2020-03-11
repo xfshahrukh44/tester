@@ -26,8 +26,9 @@ class OrderMasterController extends Controller
      */
     public function index()
     {
-        $order = OrderMaster::all();
-        return view('admin.dashboard.order.order_list', compact('order'));
+        $order = OrderMaster::with('user')->get();
+
+        return view('admin.order.order_list', compact('order'));
     }
 
     /**
@@ -43,7 +44,7 @@ class OrderMasterController extends Controller
         // foreach($product as $products){
         //     $product_list[$products->id] = $products->title;
         // }
-        return view('admin.dashboard.order.order_create', compact('product'));
+        return view('admin.order.order_create', compact('product'));
     }
 
     /**
@@ -57,6 +58,7 @@ class OrderMasterController extends Controller
         $this->validate($request,[  
             'title' => 'required|string|max:250',
             'discount' => 'required|int',
+            'purchase_unit' => 'required|int',
             'status' => 'required',
         ]);
         $order_master = OrderMaster::create($request->all());
@@ -71,7 +73,7 @@ class OrderMasterController extends Controller
         // }
         Log::create(['module_name'=>'order_create', 'user_id'=>Auth::id()]);
         
-        return view('admin.dashboard.order.order_item', compact('order_master', 'order', 'product'));
+        return view('admin.order.order_item', compact('order_master', 'order', 'product'));
 
         // return redirect()->route('order.index')->with('success','Order Created Successfully');
     }
@@ -85,7 +87,8 @@ class OrderMasterController extends Controller
     public function show($id)
     {
         $order = OrderMaster::find($id);
-        return view('admin.dashboard.order.order_detail',compact('order'));
+        $item = OrderMaster::with('product_masters')->find($id);
+        return view('admin.order.order_detail',compact('order', 'item'));
     }
 
     /**
@@ -100,7 +103,7 @@ class OrderMasterController extends Controller
             return redirect('home');
 
         $order = OrderMaster::find($id);
-        return view('admin.dashboard.order.order_update',compact('order'));
+        return view('admin.order.order_update',compact('order'));
     }
 
     /**
@@ -118,6 +121,7 @@ class OrderMasterController extends Controller
         $this->validate($request,[  
             'title' => 'required|string|max:250',
             'discount' => 'required|int',
+            'purchase_unit' => 'required|int',
             'status' => 'required',
         ]);
 

@@ -27,7 +27,7 @@ class UserController extends Controller
             return redirect('home');
 
         $user = User::all();
-        return view('admin.dashboard.user.user_list', compact('user'));
+        return view('admin.user.user_list', compact('user'));
     }
 
     /**
@@ -63,7 +63,7 @@ class UserController extends Controller
             return redirect('home'); 
         
         $user = User::find($id);
-        return view('admin.dashboard.user.user_detail',compact('user'));
+        return view('admin.user.user_detail',compact('user'));
     }
 
     /**
@@ -85,7 +85,7 @@ class UserController extends Controller
         }
 
         $user = User::find($id);
-        return view('admin.dashboard.user.user_update',compact('user', 'role_name'));
+        return view('admin.user.user_update',compact('user', 'role_name'));
     }
 
     /**

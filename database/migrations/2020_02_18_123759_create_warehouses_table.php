@@ -14,12 +14,12 @@ class CreateWarehousesTable extends Migration
     public function up()
     {
         Schema::create('warehouses', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('title');
             $table->string('location');
-            $table->enum('status', ['draft', 'pending', 'completed']);
+            $table->enum('status', ['active', 'inactive']);
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->nullable();
         });
     }
 

@@ -9,7 +9,7 @@ class ProductCategory extends Model
 {
 	use SoftDeletes;
 	
-	protected $fillable = ['title', 'parent'];
+	protected $fillable = ['title', 'parent_id'];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 

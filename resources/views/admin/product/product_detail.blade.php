@@ -3,13 +3,13 @@
 @section('content_header')
     <div class="row mb-2">
       <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Order</h1>
+          <h1 class="m-0 text-dark">Product</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/home">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('order.index') }}">Order</a></li>
-            <li class="breadcrumb-item active">{{$order->title}}</li>            
+            <li class="breadcrumb-item"> <a href="{{ route('product.index') }}">Product</a></li>
+            <li class="breadcrumb-item active">{{$product->title}}</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -24,7 +24,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  Order
+                  Product Details
                 </h3>
                 
               </div><!-- /.card-header -->
@@ -33,56 +33,39 @@
                 <div class="tab-content p-0">
                   
                   <!-- Main card content.. -->
-
-                    <div class="">
-                      <div class="container">
+                  
+                  <div class="">
+                    <div class="container">
                         <div class="form-group">
-                            <strong>User ID: </strong>
-                            {{ $order->user_id}}
+                            <strong>Title: </strong>
+                            {{ $product->title}}
                         </div>
                     </div>
                     <div class="container">
                         <div class="form-group">
-                            <strong>Title: </strong>
-                            {{ $order->title}}
+                            <strong>Description: </strong>
+                            {{ $product->long_desc}}
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <strong>Unit: </strong>
+                            {{ $product->unit->name}}
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <strong>Price: </strong>
+                            {{ $product->price}}
                         </div>
                     </div>
                     <div class="container">
                         <div class="form-group">
                             <strong>Status: </strong>
-                            {{ $order->status}}
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="form-group">
-                            <strong>Payment: </strong>
-                            {{ $order->payment}}
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="form-group">
-                            <strong>Discount: </strong>
-                            {{ $order->discount}}
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="form-group">
-                            <strong>Discount Unit: </strong>
-                            {{ $order->discount_unit}}
+                            {{ $product->status}}
                         </div>
                     </div>
                   </div>
-                
-                @role('admin')
-                <div class="col-md-12">
-                    <a class="btn btn-success" href="{{route('order.edit', $order->id)}}">Edit</a>
-
-                    {{ Form::open(['method' => 'DELETE','route' => ['order.destroy', $order->id]]) }}
-                      <button type="submit" class="btn btn-danger">Delete</button>
-                    {{ Form::close() }}
-                </div>
-                @endrole
-                  
 
                   <!-- /.Main card-content.. -->
        

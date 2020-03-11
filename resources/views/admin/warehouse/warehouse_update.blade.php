@@ -3,14 +3,14 @@
 @section('content_header')
     <div class="row mb-2">
       <div class="col-sm-6">
-          <h1 class="m-0 text-dark">User</h1>
+          <h1 class="m-0 text-dark">Product</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/home">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('user.index') }}">User</a></li>
-            <li class="breadcrumb-item">{{ $user->name }}</li>
-            <li class="breadcrumb-item active">Edit User</li>
+            <li class="breadcrumb-item"><a href="{{ route('warehouse.index') }}">Warehouse</a></li>
+            <li class="breadcrumb-item">{{$warehouse->title}}</li>
+            <li class="breadcrumb-item active">Edit warehouse</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -25,7 +25,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas mr-1"></i>
-                  Edit User
+                  Edit Warehouse
                 </h3>
                 
               </div><!-- /.card-header -->
@@ -35,8 +35,8 @@
                   
                   <!-- Main card content.. -->
 
-                  {{ Form::model($user, ['route'=>['user.update',$user->id],'method'=>'PATCH']) }}
-                  @include('admin.dashboard.user.user_master')
+                  {{ Form::model($warehouse, ['route'=>['warehouse.update',$warehouse->id],'method'=>'PATCH']) }}
+                  @include('admin.warehouse.warehouse_master')
                   {{ Form::close() }}
 
 
